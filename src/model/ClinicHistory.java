@@ -12,7 +12,7 @@ public class ClinicHistory{
 	public ClinicHistory (String status, String diagnosis, String symptom){
 		this.status = status;
 		this.diagnosis = diagnosis;
-		this.symptom = symptom,
+		this.symptom = symptom;
 	}
 	
 	public String getStatus (){
@@ -35,6 +35,6 @@ public class ClinicHistory{
 		return symptom;
 	}
 	public void setSymptom (String symptom){
-		this.symptom = symptom,
+		this.symptom = symptom;
 	}
 }
