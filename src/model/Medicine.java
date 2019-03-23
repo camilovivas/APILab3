@@ -8,6 +8,9 @@ public class Medicine{
 	private double costDose;
 	private int frequency;
 	
+	//relaciones
+	
+	
 	//metodos
 	public Medicine (String name, double dose, double costDose, int frequency){
 		this.name = name;

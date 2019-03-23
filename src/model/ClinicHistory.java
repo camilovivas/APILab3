@@ -1,4 +1,6 @@
 package model;
+import java.util.ArrayList;
+
 
 public class ClinicHistory{
 	
@@ -7,12 +9,22 @@ public class ClinicHistory{
 	private String status;
 	private String diagnosis;
 	private String symptom;
+	private ArrayList<Pet> chp;
+	private ArrayList<Medicine> cure;
+
+	//relaciones
+	private Date entry;
+	
 	
 	//metodos
-	public ClinicHistory (String status, String diagnosis, String symptom){
+	public ClinicHistory (String status, String diagnosis, String symptom, Pet chp, Date entry, Medicine cure){
 		this.status = status;
 		this.diagnosis = diagnosis;
 		this.symptom = symptom;
+		this.chp = new ArrayList<Pet>();
+		this.cure = new ArrayList<Medicine>();
+		this.entry = entry;
+		
 	}
 	
 	public String getStatus (){
@@ -37,4 +49,11 @@ public class ClinicHistory{
 	public void setSymptom (String symptom){
 		this.symptom = symptom;
 	}
+	
+	public String ShowClinicHistory(){
+		
+		String msj =
+		
+	}
+	
 }

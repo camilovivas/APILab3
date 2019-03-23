@@ -1,21 +1,26 @@
 package model;
+import java.util.ArrayList;
+
 
 public class ClientHuman {
 	//atributos
 	private String name;
 	private int id;
 	private int address;
-	private	int phone;
+	private	String phone;
+	private ArrayList<Pet> owner;
+	//relaciones
+
 	
 	//metodos
 
-	public ClientHuman (String name, int id, int address, int phone){
+	public ClientHuman (String name, int id, int address, String phone){
 	
 		this.name = name;
 		this.id = id;
 		this.address  = address;
 		this.phone = phone;
-	
+		owner = new ArrayList<Pet>();
 	}
 	
 	public String getName(){
@@ -42,10 +47,19 @@ public class ClientHuman {
 	}
 	
 	
-	public int getPhone(){
+	public String getPhone(){
 		return phone;
 	}
-	public void setPhone(int phone){
+	public void setPhone(String phone){
 		this.phone = phone;
 	}
+	
+	public String showDateContac(){
+		String msj = "los datos de contacto del cliente"+ name+"son:\n";
+		msj += "-"+address;
+		msj += "-"+phone;
+	
+		return msj;
+	}
+	
 }
