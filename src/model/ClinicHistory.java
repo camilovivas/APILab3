@@ -17,13 +17,15 @@ public class ClinicHistory{
 	
 	
 	//metodos
-	public ClinicHistory (String status, String diagnosis, String symptom, Date entry, Medicine cure, Pet chp){
+	public ClinicHistory (String status, String diagnosis, String symptom, Date entry, Pet chp){
 		this.status = status;
 		this.diagnosis = diagnosis;
 		this.symptom = symptom;
 		this.chp = chp;
 		this.cure = new ArrayList<Medicine>();
 		this.entry = entry;
+		initMedicine();
+		initDate();
 		
 	}
 	
@@ -55,6 +57,10 @@ public class ClinicHistory{
 		String msj;
 		
 	}
+	public void initMedicine(){
+		Medicine m1 = new Medicine( "acetominofem", 1.2+"cm", 4.000, 6+"horas");
+		cure.add(m1);
+	}
 	
 	public String showClinicHistory(){
 		String msj;
@@ -67,4 +73,9 @@ public class ClinicHistory{
 		return msj;
 	}
 	
+	public void initDate(){
+
+		Date d1 = new Date(1,1,2019);
+	
+	}
 }

@@ -21,6 +21,7 @@ public class ClientHuman {
 		this.address  = address;
 		this.phone = phone;
 		owner = new ArrayList<Pet>();
+		initPet();
 	}
 	
 	public String getName(){
@@ -52,6 +53,14 @@ public class ClientHuman {
 	}
 	public void setPhone(String phone){
 		this.phone = phone;
+	}
+	
+	public void initPet(){
+		Pet p1 = new Pet ("Michi", 1, 2, 4.5);
+		Pet p2 = new Pet ("luci", 1, 3, 4.6);
+		owner.add(p1);
+		owner.add(p2);
+		
 	}
 	
 	public String showDateContac(){

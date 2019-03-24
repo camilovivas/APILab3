@@ -51,4 +51,5 @@ public class Medicine{
 		this.frequency = frequency;
 	}
 	
+
 }

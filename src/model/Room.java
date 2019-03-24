@@ -40,9 +40,64 @@ public class Room {
 		return msj;
 	}
 	
-	public void initPets(){
-		
+	public void showpet1(){
+		hospitalization1.get.showPet();
 		
 	}
+	public void showpet2(){
+		hospitalization2.get.showPet();
+		
+	}
+	public void showpet3(){
+		hospitalization3.get.showPet();
+		
+	}
+	public void showpet4(){
+		hospitalization4.get.showPet();
+		
+	}
+	public void showpet5(){
+		hospitalization5.get.showPet();
+		
+	}
+	public void showpet6(){
+		hospitalization6.get.showPet();
+		
+	}
+	public void showpet7(){
+		hospitalization7.get.showPet();
+		
+	}
+	public void showpet8(){
+		hospitalization8.get.showPet();
+		
+	}
+	
+	//mostrar los nombres de la mascotas que hay en los cuartos con el numero para que lo identifique en el main
+	public String showNamePet1(){
+		return "1"+hospitalization1.getName();
+	}
+	public String showNamePet2(){
+		return "2"+hospitalization2.getName();
+	}
+	public String showNamePet3(){
+		return "3"+hospitalization3.getName();
+	}
+	public String showNamePet4(){
+		return "4"+hospitalization4.getName();
+	}
+	public String showNamePet5(){
+		return "5"+hospitalization5.getName();
+	}
+	public String showNamePet6(){
+		return "6"+hospitalization6.getName();
+	}
+	public String showNamePet7(){
+		return "7"+hospitalization7.getName();
+	}
+	public String showNamePet8(){
+		return "8"+hospitalization8.getName();
+	}
+
 	
 }

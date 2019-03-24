@@ -56,7 +56,7 @@ public class Pet{
 	}
 	
 	
-	public String detecTypeAnimal(){
+	public String detecTypeAnimal(int typeAnimal){
 		String msj;
 		
 		if(typeAnimal==1){
@@ -82,6 +82,7 @@ public class Pet{
 		return msj;
 	}
 	
+	//calcular costo por dia de gato
 	public double costHospitalizationCat(){
 		
 		double cost = 0.0;
@@ -101,6 +102,7 @@ public class Pet{
 		return cost;
 	}
 	
+	//calcular costo por dia de perro
 	public double costHospitalizationDog(){
 		double cost = 0.0;
 		if (typeAnimal ==2 && weight >= 1 || weight<=3){
@@ -118,6 +120,8 @@ public class Pet{
 		
 		return cost;
 	}
+	
+	//calcular costo por dia de ave
 	public double costHospitalizationBird(){
 		double cost = 0.0;
 		if (typeAnimal ==3 && weight >= 1 || weight<=3){
@@ -136,7 +140,7 @@ public class Pet{
 		return cost;
 		
 	}
-	
+	//calcular costo por dia de otro
 	public double costHospitalizationOter(){
 		double cost = 0.0;
 		if (typeAnimal != 3 && weight >= 1 || weight<=3){

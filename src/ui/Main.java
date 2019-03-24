@@ -43,19 +43,40 @@ public class Main {
 			
 			switch (opcionElegida){
 				case 1:
-				System.out.println("ingrese nombre cliente:");
-				String name =  lector.next();
+				if(relacion.roomFree() == true){
+					//registro cliente
 				
-				System.out.println("ingrese id cliente");
-				int id =  lector.nextInt();
+					System.out.println("ingrese nombre cliente:");
+					String name =  lector.next();
 				
-				System.out.println("ingrese direccion cliente:");
-				String address =  lector.next();
+					System.out.println("ingrese id cliente");
+					int id =  lector.nextInt();
 				
-				System.out.println("ingrese numero celular cliente");
-				String phone =  lector.next();
+					System.out.println("ingrese direccion cliente:");
+					String address =  lector.next();
 				
-				relacion.addClient();
+					System.out.println("ingrese numero celular cliente");
+					String phone =  lector.next();
+				
+					relacion.addClient();
+				
+					//regisgtro mascota
+					System.out.println("ingrese nombre mascota");String name, int typeAnimal, int age, double weight
+					String phone =  lector.next();
+				
+					System.out.println("ingrese el tipo de animal:"+"\n"+"cat =1"+"\n"+"dog = 2"+"\n"+"bird = 3"+"\n"+"otro = 4");
+					int typeAnimal =  lector.nextInt();
+				
+					System.out.println("ingrese la edad de la mascota");
+					int age =  lector.nextInt();
+					
+					System.out.println("ingrese el peso de la mascota");
+					double id =  lector.nextInt();
+				}
+				else{
+					System.out.println("no hay cuartos disponibles");
+				}
+				
 				break;
 				
 				case 2:
@@ -95,6 +116,7 @@ public class Main {
 				
 				case 5:
 				System.out.println("las mascotas hospitalizadas son:");
+				relacion.showPetsHosp(); 
 				
 				System.out.println("ingrese el numero de la mascota que quiere dar de alta");
 				
@@ -106,7 +128,12 @@ public class Main {
 				break;
 				
 				case 7:
-				System.out.println("las mascotas hospitalizadas son:");
+				System.out.println("las mascotas hospitalizadas son:");// lso cuartos con mascotas hospitalizadas
+				relacion.showPetsHosp(); 
+				
+				System.out.println("ingrese el numero de la mascota que quiere ver los datos de contacto del dueño");
+				int day =  lector.nextInt();
+				
 				
 				System.out.println("ingrese el nombre de la mascota a buscar");
 				String name =  lector.next();
@@ -136,6 +163,7 @@ public class Main {
 		lector = new Scanner(System.in);
 	}
 	
+	//menu bonito
 	public void mostrarBanner() {
 		StringBuilder all = new StringBuilder();
 		all.append("\n");
