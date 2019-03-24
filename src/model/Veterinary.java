@@ -17,17 +17,19 @@ public class Veterinary{
 		miniRoom = new Room[TOTAL_ROOM];
 		service =  new ArrayList<ClientHuman>();
 		history = new ArrayList<ClinicHistory>();
+		initMiniRoom();
 	}
 	
-	miniRoom[0] = new Room(true, 1,//relacion);
-	miniRoom[1] = new Room(true, 2);
-	miniRoom[2] = new Room(true, 3);
-	miniRoom[3] = new Room(true, 4);
-	miniRoom[4] = new Room(true, 5);
-	miniRoom[5] = new Room(true, 6);
-	miniRoom[6] = new Room(true, 7);
-	miniRoom[7] = new Room(true, 8);
-	
+	public void initMiniRoom(){
+		miniRoom[0] = new Room(true, 1, hospitalization1);//relacion
+		miniRoom[1] = new Room(true, 2, hospitalization2);
+		miniRoom[2] = new Room(true, 3, hospitalization3);
+		miniRoom[3] = new Room(true, 4, hospitalization4);
+		miniRoom[4] = new Room(true, 5, hospitalization5);
+		miniRoom[5] = new Room(true, 6, hospitalization6);
+		miniRoom[6] = new Room(true, 7, hospitalization7);
+		miniRoom[7] = new Room(true, 8, hospitalization8);
+	}
 	public String getName(){
 		return name;
 	}
@@ -46,7 +48,7 @@ public class Veterinary{
 	
 	
 	
-	public String addClient (String name, int id, int address, String phone){
+	public String addClient (String name, int id, String address, String phone){
 		String msj;
 		ClientHuman c1 = buscar(id);
 		if (c1 != null){
@@ -60,13 +62,13 @@ public class Veterinary{
 		
 	}
 	
-	public Client buscarCLiente (String Id){
-		booblean continuar = true;
+	public ClientHuman buscarCLiente (String Id){
+		boolean continuar = true;
 		ClientHuman aBuscar = null;
 	
 		for(int i = 0 ; i<service.size()&&continuar; i++){
 			ClientHuman existente = service.get(i);
-			if (existente.getid().equals(id)){
+			if (existente.getId().equals(aBuscar(id))){
 				aBuscar=existente;
 				continuar = false;
 			
@@ -76,4 +78,16 @@ public class Veterinary{
 	
 		return aBuscar;
 	}
+	
+	
+	public void clinicHistory(int i){
+		history.get(i).showClinicHistory();
+	}
+
+	
+	public void showNumRoom(int j){
+		miniRoom[j].getNum();
+	}
+	
+	
 }

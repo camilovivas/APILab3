@@ -85,13 +85,13 @@ public class Pet{
 	public double costHospitalizationCat(){
 		
 		double cost = 0.0;
-		if (typeAnimal =1 && weight >= 1 || weight<=3){
+		if (typeAnimal ==1 && weight >= 1 || weight<=3){
 			cost = 10.000;
 		}
-		else if(typeAnimal =1 && weight >= 3.1 || weight<=10){
+		else if(typeAnimal ==1 && weight >= 3.1 || weight<=10){
 			cost =12.000;
 		}
-		else if (typeAnimal =1 && weight >= 10.1 || weight<=20){
+		else if (typeAnimal ==1 && weight >= 10.1 || weight<=20){
 			cost =15.000;
 		}
 		else{
@@ -103,13 +103,13 @@ public class Pet{
 	
 	public double costHospitalizationDog(){
 		double cost = 0.0;
-		if (typeAnimal =2 && weight >= 1 || weight<=3){
+		if (typeAnimal ==2 && weight >= 1 || weight<=3){
 			cost = 15.000;
 		}
-		else if(typeAnimal =2 && weight >= 3.1 || weight<=10){
+		else if(typeAnimal ==2 && weight >= 3.1 || weight<=10){
 			cost =17.000;
 		}
-		else if (typeAnimal =2 && weight >= 10.1 || weight<=20){
+		else if (typeAnimal ==2 && weight >= 10.1 || weight<=20){
 			cost =20.000;
 		}
 		else{
@@ -120,13 +120,13 @@ public class Pet{
 	}
 	public double costHospitalizationBird(){
 		double cost = 0.0;
-		if (typeAnimal =3 && weight >= 1 || weight<=3){
+		if (typeAnimal ==3 && weight >= 1 || weight<=3){
 			cost = 10.000;
 		}
-		else if(typeAnimal =3 && weight >= 3.1 || weight<=10){
+		else if(typeAnimal ==3 && weight >= 3.1 || weight<=10){
 			cost =12.000;
 		}
-		else if (typeAnimal =3 && weight >= 10.1 || weight<=20){
+		else if (typeAnimal ==3 && weight >= 10.1 || weight<=20){
 			cost =20.000;
 		}
 		else{
@@ -154,4 +154,7 @@ public class Pet{
 	
 		return cost;
 	}
+	
+
+	
 }

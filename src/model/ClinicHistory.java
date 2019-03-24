@@ -9,7 +9,7 @@ public class ClinicHistory{
 	private String status;
 	private String diagnosis;
 	private String symptom;
-	private ArrayList<Pet> chp;
+	private Pet chp;
 	private ArrayList<Medicine> cure;
 
 	//relaciones
@@ -17,11 +17,11 @@ public class ClinicHistory{
 	
 	
 	//metodos
-	public ClinicHistory (String status, String diagnosis, String symptom, Pet chp, Date entry, Medicine cure){
+	public ClinicHistory (String status, String diagnosis, String symptom, Date entry, Medicine cure, Pet chp){
 		this.status = status;
 		this.diagnosis = diagnosis;
 		this.symptom = symptom;
-		this.chp = new ArrayList<Pet>();
+		this.chp = chp;
 		this.cure = new ArrayList<Medicine>();
 		this.entry = entry;
 		
@@ -52,8 +52,19 @@ public class ClinicHistory{
 	
 	public String ShowClinicHistory(){
 		
-		String msj =
+		String msj;
 		
+	}
+	
+	public String showClinicHistory(){
+		String msj;
+		
+		msj = "el estado de la hisroria clinoica es:"+status+"\n";
+		msj += "el diagnostico es:"+diagnosis+"\n";
+		msj += "los sintomas son:"+symptom+"\n";
+		msj += "la fecha ingreso:"+entry.showDate();
+		
+		return msj;
 	}
 	
 }

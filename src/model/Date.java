@@ -37,6 +37,12 @@ public class Date {
 		this.year = year;
 	}
 	
+	public String showDate(){
+		
+		String msj= day+"/"+month+"/"+year;
+		
+		return msj;	
+	}
 	
 	
 }

@@ -6,7 +6,7 @@ public class ClientHuman {
 	//atributos
 	private String name;
 	private int id;
-	private int address;
+	private String address;
 	private	String phone;
 	private ArrayList<Pet> owner;
 	//relaciones
@@ -14,7 +14,7 @@ public class ClientHuman {
 	
 	//metodos
 
-	public ClientHuman (String name, int id, int address, String phone){
+	public ClientHuman (String name, int id, String address, String phone){
 	
 		this.name = name;
 		this.id = id;
@@ -39,10 +39,10 @@ public class ClientHuman {
 	}
 	
 	
-	public int getAddress(){
+	public String getAddress(){
 		return address;
 	}
-	public void setAddress (int address){
+	public void setAddress (String address){
 		this. address = address;
 	}
 	
@@ -61,5 +61,21 @@ public class ClientHuman {
 	
 		return msj;
 	}
+	public String showPetsHos(){
+		String msj = " ";
+		for(int j = 0 ; j<owner.size(); j++){
+			msj += owner.get(j).getName();
+			
+		}
+		
+		return msj;
+	}
 	
+	public void addPet(String name, int typeAnimal, int age, double weight){
+		
+		Pet nuevo = new Pet(name, typeAnimal, age, weight);
+		owner.add(nuevo);
+		
+	}
+
 }
