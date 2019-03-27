@@ -8,22 +8,21 @@ public class ClientHuman {
 	private int id;
 	private String address;
 	private	String phone;
-	private ArrayList<Pet> owner;
+	private ArrayList<Pet> ownerC;
 	//relaciones
 
 	
-	//metodos
-
+	//constructor
 	public ClientHuman (String name, int id, String address, String phone){
 	
 		this.name = name;
 		this.id = id;
 		this.address  = address;
 		this.phone = phone;
-		owner = new ArrayList<Pet>();
-		initPet();
+		ownerC = new ArrayList<Pet>();
 	}
 	
+	//get y set
 	public String getName(){
 		return name;
 	}
@@ -55,14 +54,17 @@ public class ClientHuman {
 		this.phone = phone;
 	}
 	
-	public void initPet(){
-		Pet p1 = new Pet ("Michi", 1, 2, 4.5);
-		Pet p2 = new Pet ("luci", 1, 3, 4.6);
-		owner.add(p1);
-		owner.add(p2);
+	
+	public ArrayList<Pet> getownerC(){
 		
+		return ownerC;
+	}
+	public setownerC (ArrayList<Pet> ownerC){
+		
+		this.ownerC = ownerC;
 	}
 	
+	//metodos
 	public String showDateContac(){
 		String msj = "los datos de contacto del cliente"+ name+"son:\n";
 		msj += "-"+address;
@@ -72,8 +74,8 @@ public class ClientHuman {
 	}
 	public String showPetsHos(){
 		String msj = " ";
-		for(int j = 0 ; j<owner.size(); j++){
-			msj += owner.get(j).getName();
+		for(int j = 0 ; j<ownerC.size(); j++){
+			msj += ownerC.get(j).getName();
 			
 		}
 		
@@ -83,7 +85,18 @@ public class ClientHuman {
 	public void addPet(String name, int typeAnimal, int age, double weight){
 		
 		Pet nuevo = new Pet(name, typeAnimal, age, weight);
-		owner.add(nuevo);
+		ownerC.add(nuevo);
+		
+	}
+	
+	public String showClient(){
+		String msj;
+		msj = "Nombre:"+"\n"+getName();
+		msj += "Identificado por el numero:"+"\n"+getId();
+		msj += "La direccion es:"+"\n"+getAddress();
+		msj += "Numero celular:"+"\n"+getPhone();
+		
+		return msj;
 		
 	}
 

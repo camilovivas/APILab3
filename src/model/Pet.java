@@ -13,18 +13,19 @@ public class Pet{
 	private double weight;
 	
 	//relaciones
+	private ClientHuman ownerP;
 	
-	//metodos
-	
-	public Pet (String name, int typeAnimal, int age, double weight){
+	//constructor
+	public Pet (String name, int typeAnimal, int age, double weight, ClientHuman ownerP){
 		this.name = name;
 		this.typeAnimal = typeAnimal;
 		this.age = age;
 		this.weight = weight;
-		
+		this.ownerP = ownerP;
 		
 	}
 	
+	//get y set
 	public String getName(){
 		return name;
 	}
@@ -55,6 +56,22 @@ public class Pet{
 		this.weight = weight;
 	}
 	
+	
+	public ClientHuman getOwnerP(){
+		return ownerP;
+	}
+	public void setOwner (ClientHuman ownerP){
+		this.ownerP = ownerP;
+	}
+	
+	//metodos
+	
+	//hacer relacion con el dueño ppara poder traer el nombre
+	public String dateOwner(){
+		String msj = ownerP.showClient();
+		
+		return msj;
+	}
 	
 	public String detecTypeAnimal(int typeAnimal){
 		String msj;
@@ -159,6 +176,15 @@ public class Pet{
 		return cost;
 	}
 	
-
+	public void calCostForAll(){
+		
+		costHospitalizationBird();
+		costHospitalizationCat();
+		costHospitalizationDog();
+		costHospitalizationOter();
+	}
 	
+	public String dateContac(){
+	return ownerP.showDateContac();
+	}
 }

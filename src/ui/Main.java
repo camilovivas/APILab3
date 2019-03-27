@@ -13,6 +13,7 @@ public class Main {
 	public Main () {
 		
 		init();
+		lector = new Scanner(System.in);
 		
 	}
 	
@@ -61,7 +62,7 @@ public class Main {
 					relacion.addClient();
 				
 					//regisgtro mascota
-					System.out.println("ingrese nombre mascota");String name, int typeAnimal, int age, double weight
+					System.out.println("ingrese nombre mascota");
 					String phone =  lector.next();
 				
 					System.out.println("ingrese el tipo de animal:"+"\n"+"cat =1"+"\n"+"dog = 2"+"\n"+"bird = 3"+"\n"+"otro = 4");
@@ -71,7 +72,7 @@ public class Main {
 					int age =  lector.nextInt();
 					
 					System.out.println("ingrese el peso de la mascota");
-					double id =  lector.nextInt();
+					double id =  lector.nextDouble();
 				}
 				else{
 					System.out.println("no hay cuartos disponibles");
@@ -99,9 +100,11 @@ public class Main {
 				break;
 				
 				case 3:
-				System.out.println("ingrese el nombre del dueño de la mascota para ver los datos de contacto");
-				String name =  lector.next();
 				
+				relacion.showNameForAllPetsHospi();
+				System.out.println("ingrese el numero del cuarto en que se encuentra la mascota, para mostrar los datos de contacto de su dueño");
+				int num =  lector.nextInt();
+				relacion.dateContac();
 				break;
 				
 				case 4:
@@ -115,8 +118,8 @@ public class Main {
 				break;
 				
 				case 5:
-				System.out.println("las mascotas hospitalizadas son:");
-				relacion.showPetsHosp(); 
+				System.out.println("las mascotas hospitalizadas son:");// estas son las que hay, seleccione la que quiere ver
+				
 				
 				System.out.println("ingrese el numero de la mascota que quiere dar de alta");
 				
@@ -128,16 +131,18 @@ public class Main {
 				break;
 				
 				case 7:
-				System.out.println("las mascotas hospitalizadas son:");// lso cuartos con mascotas hospitalizadas
-				relacion.showPetsHosp(); 
-				
-				System.out.println("ingrese el numero de la mascota que quiere ver los datos de contacto del dueño");
-				int day =  lector.nextInt();
+				System.out.println("las mascotas hospitalizadas son:");// los nombres de las mascotas hospitalizadas
 				
 				
-				System.out.println("ingrese el nombre de la mascota a buscar");
-				String name =  lector.next();
+				//System.out.println("ingrese el numero de la mascota que quiere ver los datos de contacto del dueño");
+				//int day =  lector.nextInt();
 				
+				
+				System.out.println("ingrrese el nombre de la mascota abuscar...");
+				String nameFind = lector.next();
+			
+				relacion.showPetsHosp(String nameFind);
+			
 				break;
 				
 				//el numero de cuarto donde esta hozpitalizada la mascota es:
@@ -160,7 +165,33 @@ public class Main {
 	}
 	
 	public void init(){
-		lector = new Scanner(System.in);
+		Date d1 = new Date(1,1,2019);
+		
+		ClinicHistory ch1= new ClinicHistory(true, "virosis", "vomito", d1, p1);
+		ClinicHistory ch2= new ClinicHistory(true, "virosis", "diarrea", d1, p2);
+		
+		
+		Pet p1 = new Pet ("Michi", 1, 2, 4.5, cl1);
+		Pet p2 = new Pet ("luci", 1, 3, 4.6, cl1);
+		owner.add(p1);
+		owner.add(p2);
+		ClientHuman cl1 = new ClientHuman( "Camilo", 1006015105, "cra 46C #52-15", "3024453593");
+		service.add(cl1);
+		
+		Medicine m1 = new Medicine( "acetominofem", 1.2+"cm", 4.000, 6+"horas");
+		cure.add(m1);
+		
+		
+		Room miniRoom1 = new Room(true, 1);
+		Room miniRoom2 = new Room(true, 2);
+		Room miniRoom3 = new Room(true, 3);
+		Room miniRoom4 = new Room(false, 4);
+		Room miniRoom5 = new Room(true, 5);
+		Room miniRoom6 = new Room(false, 6);
+		Room miniRoom7 = new Room(true, 7);
+		Room miniRoom8 = new Room(true, 8);
+		Room[] allRooms = {miniRoom1, miniRoom2, miniRoom3, miniRoom4, miniRoom5, miniRoom6, miniRoom7, miniRoom8};
+		relacion = new Veterinary("mi pequeña mascota", "Cali");
 	}
 	
 	//menu bonito
