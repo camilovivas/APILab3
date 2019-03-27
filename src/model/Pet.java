@@ -14,9 +14,10 @@ public class Pet{
 	
 	//relaciones
 	private ClientHuman ownerP;
+	private ClinicHistory report;
 	
 	//constructor
-	public Pet (String name, int typeAnimal, int age, double weight, ClientHuman ownerP){
+	public Pet (String name, int typeAnimal, int age, double weight, ClientHuman ownerP, ClinicHistory report){
 		this.name = name;
 		this.typeAnimal = typeAnimal;
 		this.age = age;
@@ -90,11 +91,11 @@ public class Pet{
 	
 	
 	public String showPet(){
-		String msj = "Nombre:"+name+"\n";
+		String msj = "Nombre:"+getName()+"\n";
 		
 		msj +="tipo"+detecTypeAnimal()+"\n";
-		msj +="edad"+age+"\n";
-		msj +="peso"+weight+"\n";
+		msj +="edad"+getAge()+"\n";
+		msj +="peso"+getWeight()+"\n";
 		
 		return msj;
 	}
@@ -186,5 +187,10 @@ public class Pet{
 	
 	public String dateContac(){
 	return ownerP.showDateContac();
+	}
+	
+	public String reportPet(){
+		
+		return report.showClinicHistory();
 	}
 }

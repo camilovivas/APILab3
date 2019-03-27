@@ -224,10 +224,13 @@ public class Veterinary{
 		miniRoom[num-1].setStatus = true;
 		
 	}
+	
 	public String showNameForAllPetsHospi(){
 		String msj;
+		
 		for(int i = 0; i <TOTAL_ROOM; i++){
-			msj += "en el cuarto "+int numero = i-1+"esta la mascota:"+miniRoom[i].namePet();
+			msj += "en el cuarto "+i+"esta la mascota:"+miniRoom[i].namePet();
 		}
+		return msj;
 	}
 }

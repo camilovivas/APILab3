@@ -70,7 +70,7 @@ public class ClinicHistory{
 		else{
 			msj = cerrada;
 		}
-		return msj,
+		return msj;
 	}
 	
 	
@@ -85,6 +85,7 @@ public class ClinicHistory{
 		msj += "+----------------------+---------------------------------+";
 		msj += "Los sintomas que presentaba la mascota:"+getSymptom+"\n";
 		msj += "+----------------------+---------------------------------+";
+		msj += "los medicamentos recetados:";
 		
 		
 		return msj;

@@ -29,7 +29,7 @@ public class Room {
 	public int getNum(){
 		return num;
 	}
-	public setNum (int num){
+	public void setNum (int num){
 		this.num = num;
 	}
 	
@@ -48,7 +48,7 @@ public class Room {
 		String msj;
 		
 		msj = getNum+"\n";
-		msj += 
+		msj += hospitalization.reportPet();
 		
 		return msj;
 	}
