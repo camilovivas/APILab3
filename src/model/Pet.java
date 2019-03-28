@@ -23,7 +23,7 @@ public class Pet{
 		this.age = age;
 		this.weight = weight;
 		this.ownerP = ownerP;
-		
+		this.report = report;
 	}
 	
 	//get y set
@@ -61,9 +61,16 @@ public class Pet{
 	public ClientHuman getOwnerP(){
 		return ownerP;
 	}
-	public void setOwner (ClientHuman ownerP){
+	public void setOwnerP (ClientHuman ownerP){
 		this.ownerP = ownerP;
 	}
+	
+	public ClinicHistory getReport(){
+		return report;
+	}
+	public void setReport(ClinicHistory report){
+		this.report = report;
+	}		
 	
 	//metodos
 	
@@ -189,6 +196,7 @@ public class Pet{
 	return ownerP.showDateContac();
 	}
 	
+	//tiene los datos enla historia clinica
 	public String reportPet(){
 		
 		return report.showClinicHistory();

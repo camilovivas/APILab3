@@ -59,19 +59,22 @@ public class ClientHuman {
 		
 		return ownerC;
 	}
-	public setownerC (ArrayList<Pet> ownerC){
+	public void setOwnerC (ArrayList<Pet> ownerC){
 		
 		this.ownerC = ownerC;
 	}
 	
 	//metodos
+	
+	//muestra los datos de contacto
 	public String showDateContac(){
-		String msj = "los datos de contacto del cliente"+ name+"son:\n";
-		msj += "-"+address;
-		msj += "-"+phone;
+		String msj = "los datos de contacto del cliente"+ getName+"son:\n";
+		msj += "-"+getAddress;
+		msj += "-"+getPhone;
 	
 		return msj;
 	}
+	
 	public String showPetsHos(){
 		String msj = " ";
 		for(int j = 0 ; j<ownerC.size(); j++){
@@ -81,7 +84,7 @@ public class ClientHuman {
 		
 		return msj;
 	}
-	
+	//agrega las mascotas
 	public void addPet(String name, int typeAnimal, int age, double weight){
 		
 		Pet nuevo = new Pet(name, typeAnimal, age, weight);
@@ -89,6 +92,7 @@ public class ClientHuman {
 		
 	}
 	
+	//muestra todo el cliente
 	public String showClient(){
 		String msj;
 		msj = "Nombre:"+"\n"+getName();

@@ -22,11 +22,7 @@ public class Veterinary{
 	
 	
 	
-	public void initClinicHistory(){
-		
-		ClinicHistory ch = new ClinicHistory (
-		
-	}
+	
 	//get y set
 	public String getName(){
 		return name;
@@ -201,10 +197,11 @@ public class Veterinary{
 	
 	public void showHistRoom(){
 		boolean encontrado = false;
-		for(int i = 0; i<history.size() && !encontrado; i++)
-		if (history.get(i)== 
+		for(int i = 0; i<history.size() && !encontrado; i++){
+			if (history.get(i)== ){
 		
-		
+			}
+		}
 	}
 	
 	//agregar mascotas
@@ -213,9 +210,10 @@ public class Veterinary{
 		
 	}
 	
+	//tiene los datos de contacto del dueño de cada mascota que hay hospitalizada
 	public String dateContac(int num){
 		
-		return miniRoom[num-1].dateContacOwner()();
+		return miniRoom[num-1].dateContacOwner();
 	}
 	
 	

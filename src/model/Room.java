@@ -15,7 +15,7 @@ public class Room {
 	public Room (boolean status, int num, Pet hospitalization){
 		this.status = status;
 		this.num = num;
-
+		this.hospitalization = hospitalization;
 	}
 	
 	//get y set
@@ -33,6 +33,13 @@ public class Room {
 		this.num = num;
 	}
 	
+	public Pet getHospitalization(){
+		return hospitalization;
+		
+	}
+	public void setHospitalization(Pet hospitalization){
+		this.hospitalization = hospitalization;
+	}
 	
 	public String Num(){
 		String msj;
@@ -56,12 +63,12 @@ public class Room {
 		return hospitalization.dateContac();
 	}
 	
-	public void showPetinRoom(){
-	hospitalization.showPet();
+	public String showPetinRoom(){
+	return hospitalization.showPet();
 	}
 	
-	public void namePet(){
-		hospitalization.getName();
+	public String namePet(){
+		return hospitalization.getName();
 	}
 	
 }

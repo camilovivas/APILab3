@@ -6,7 +6,7 @@ public class ClinicHistory{
 	
 	//atributos
 	
-	private double status;
+	private boolean status;
 	private String diagnosis;
 	private String symptom;
 	private ArrayList<Medicine> cure;
@@ -28,10 +28,10 @@ public class ClinicHistory{
 	
 	
 	//get y set
-	public String getStatus (){
+	public boolean getStatus (){
 		return status;
 	}
-	public void setStatus ( String status){
+	public void setStatus (boolean status){
 		this.status = status;
 	}
 	
