@@ -33,7 +33,7 @@ public class Main {
 			System.out.println("1.Registrar cliente y mascota");
 			System.out.println("2.Ver informe de historias clinicas");
 			System.out.println("3.Consultar datos del dueño de una mascota"); //ingrese nombre de animal o nombre del dueño
-			System.out.println("4.Calcular costo de hospitalizacion");
+			System.out.println("4.Ver los informes del historial de historias clinicas");
 			System.out.println("5.Dar de alta a una mascota");
 			System.out.println("6.Ver ingresos por conceptos de hospitalizacion");// recorrer las historias e ir sumando el costo
 			System.out.println("7.Ver el numero de mini cuarto de una mascota hospitalizada");
@@ -81,35 +81,20 @@ public class Main {
 				break;
 				
 				case 2:
-				System.out.println("la historia clinica de la mascota que esta en el cuarto 1 es:");
-				
-				System.out.println("la historia clinica de la mascota que esta en el cuarto 2 es:");
-				
-				System.out.println("la historia clinica de la mascota que esta en el cuarto 3 es:");
-				
-				System.out.println("la historia clinica de la mascota que esta en el cuarto 4 es:");
-				
-				System.out.println("la historia clinica de la mascota que esta en el cuarto 5 es:");
-				
-				System.out.println("la historia clinica de la mascota que esta en el cuarto 6 es:");
-				
-				System.out.println("la historia clinica de la mascota que esta en el cuarto 7 es:");
-				
-				System.out.println("la historia clinica de la mascota que esta en el cuarto 8 es:");
+				System.out.println(relacion.report());
 				
 				break;
 				
 				case 3:
 				
-				relacion.showNameForAllPetsHospi();
+				System.out.println(relacion.showNameForAllPetsHospi());
 				System.out.println("ingrese el numero del cuarto en que se encuentra la mascota, para mostrar los datos de contacto de su dueño");
 				int num =  lector.nextInt();
 				relacion.dateContac();
 				break;
 				
 				case 4:
-				System.out.println("ingrese el nombre de la mascota hozpitalizada");
-				String name =  lector.next();
+				System.out.println(relacion.ShowReportClinicHistory());
 				
 				
 				System.out.println("ingrese el numero de dias que estuvo hospitalizada la mascota");
@@ -119,10 +104,12 @@ public class Main {
 				
 				case 5:
 				System.out.println("las mascotas hospitalizadas son:");// estas son las que hay, seleccione la que quiere ver
+				System.out.println(relacion.showNameForDeleit());
 				
+				System.out.println("ingrese el numero del dueño de la mascota que quiere dar de alta");
+				int id = lector.nextInt();
 				
-				System.out.println("ingrese el numero de la mascota que quiere dar de alta");
-				
+				relacion.deleitPet(int id, String name);
 				break;
 				
 				case 6:
@@ -133,12 +120,9 @@ public class Main {
 				case 7:
 				System.out.println("las mascotas hospitalizadas son:");// los nombres de las mascotas hospitalizadas
 				
+				relacion.showNameForAllPetsHospi();
 				
-				//System.out.println("ingrese el numero de la mascota que quiere ver los datos de contacto del dueño");
-				//int day =  lector.nextInt();
-				
-				
-				System.out.println("ingrrese el nombre de la mascota abuscar...");
+				System.out.println("ingrese el nombre de la mascota abuscar...");
 				String nameFind = lector.next();
 			
 				relacion.showPetsHosp(String nameFind);
@@ -168,28 +152,31 @@ public class Main {
 		Date d1 = new Date(1,1,2019);
 		
 		ClinicHistory ch1= new ClinicHistory(true, "virosis", "vomito", d1, p1);
-		ClinicHistory ch2= new ClinicHistory(true, "virosis", "diarrea", d1, p2);
+		ClinicHistory ch2= new ClinicHistory(true, "virosis", "diarrea", d1, p2, m1);
 		
 		
 		Pet p1 = new Pet ("Michi", 1, 2, 4.5, cl1);
 		Pet p2 = new Pet ("luci", 1, 3, 4.6, cl1);
 		owner.add(p1);
 		owner.add(p2);
-		ClientHuman cl1 = new ClientHuman( "Camilo", 1006015105, "cra 46C #52-15", "3024453593");
+		ClientHuman cl1 = new ClientHuman( "Camilo", 1006015105, "cra 46C #52-15", "3024453593", p1, p2);
 		service.add(cl1);
 		
 		Medicine m1 = new Medicine( "acetominofem", 1.2+"cm", 4.000, 6+"horas");
 		cure.add(m1);
 		
+		Medicine m2 = new Medicine( "suero", 1.2+"cm", 4.000, 6+"horas");
+		cure.add(m2);
 		
-		Room miniRoom1 = new Room(true, 1);
-		Room miniRoom2 = new Room(true, 2);
-		Room miniRoom3 = new Room(true, 3);
-		Room miniRoom4 = new Room(false, 4);
-		Room miniRoom5 = new Room(true, 5);
-		Room miniRoom6 = new Room(false, 6);
-		Room miniRoom7 = new Room(true, 7);
-		Room miniRoom8 = new Room(true, 8);
+
+		Room miniRoom1 = new Room(true, 1, null);
+		Room miniRoom2 = new Room(true, 2, null);
+		Room miniRoom3 = new Room(true, 3, null);
+		Room miniRoom4 = new Room(false, 4, p2);
+		Room miniRoom5 = new Room(true, 5, null);
+		Room miniRoom6 = new Room(false, 6, p1);
+		Room miniRoom7 = new Room(true, 7, null);
+		Room miniRoom8 = new Room(true, 8, null);
 		Room[] allRooms = {miniRoom1, miniRoom2, miniRoom3, miniRoom4, miniRoom5, miniRoom6, miniRoom7, miniRoom8};
 		relacion = new Veterinary("mi pequeña mascota", "Cali");
 	}

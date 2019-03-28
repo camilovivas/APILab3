@@ -41,16 +41,15 @@ public class Room {
 		this.hospitalization = hospitalization;
 	}
 	
+	//numero del cuarto
 	public String Num(){
-		String msj;
 		
-		msj += "el numero del cuarto es:"+getNum;
+		return "el numero del cuarto es:"+getNum;
 		
-		return msj;
 	}
 	
 	
-	
+	//reporte de animal
 	public String report(){
 		String msj;
 		
@@ -59,16 +58,25 @@ public class Room {
 		
 		return msj;
 	}
+	
+	//ddadtos del dueño
 	public String dateContacOwner(){
 		return hospitalization.dateContac();
 	}
 	
+	//ver los detalles de la mascota que etsa en el cuarto
 	public String showPetinRoom(){
 	return hospitalization.showPet();
 	}
 	
+	//nombre del animal que esta en el cuarto
 	public String namePet(){
 		return hospitalization.getName();
+	}
+	
+	//para cambiar el estado de la historia clinica cuando se de de alta al animal 
+	public void statusHist(boolean status){
+		hospitalization.statusHis(status);
 	}
 	
 }

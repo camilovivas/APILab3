@@ -85,10 +85,23 @@ public class ClientHuman {
 		return msj;
 	}
 	//agrega las mascotas
-	public void addPet(String name, int typeAnimal, int age, double weight){
+	public void addPet(String name, int typeAnimal, int age, double weight, ClientHuman ownerP, ClinicHistory report){
 		
-		Pet nuevo = new Pet(name, typeAnimal, age, weight);
+		Pet nuevo = new Pet(name, typeAnimal, age, weight, ownerP, report);
 		ownerC.add(nuevo);
+		
+	}
+	
+	//eliminar mascota
+	public void deleitPet(String name){
+		String msj;
+		for(int i = 0; i<ownerC.size(); i++){
+			if(ownerC.get(i).getName.equals(name)){
+				ownerC.remove(i);
+				
+			}
+			
+		}
 		
 	}
 	

@@ -201,4 +201,10 @@ public class Pet{
 		
 		return report.showClinicHistory();
 	}
+	
+	//cambiarestado a historia clinica
+	public void statusHis(boolean status){
+		
+		getReport().setStatus(status);
+	}
 }
