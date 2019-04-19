@@ -13,16 +13,18 @@ public class ClinicHistory{
 
 	//relaciones
 	private Date entry;
+	private Date out;
 	private Pet chp;
 	
 	//constructor
-	public ClinicHistory (double status, String diagnosis, String symptom, Date entry, Pet chp){
+	public ClinicHistory (boolean status, String diagnosis, String symptom, Date entry, Date out, Pet chp){
 		this.status = status;
 		this.diagnosis = diagnosis;
 		this.symptom = symptom;
 		this.chp = chp;
 		cure = new ArrayList<Medicine>();
 		this.entry = entry;
+		this.out = out;
 		
 	}
 	
@@ -52,8 +54,28 @@ public class ClinicHistory{
 	}
 	
 	
+	public Date getEntry(){
+		return entry;
+	}
+	public void setEntry (Date entry){
+		this.entry = entry;
+	}
+	
+	
+	public Date getOut(){
+		return out;
+	}
+	
+	
+	public Pet getChp(){
+		return chp;
+	}
+	public void setChp(Pet chp){
+		this.chp = chp;
+	}
+	
+	
 	public ArrayList<Medicine>  getCure(){
-		
 		return cure;
 	}
 	public void setCure (ArrayList<Medicine> cure){
@@ -65,43 +87,163 @@ public class ClinicHistory{
 	public String status(){
 		String msj;
 		if(status == true){
-			msj = abierta;
+			msj = "abierta";
 		}
 		else{
-			msj = cerrada;
+			msj = "cerrada";
 		}
 		return msj;
 	}
 	
 	
-	public String ShowReportClinicHistory(){
+	public String toString(){
 		
 		String msj;
-		msj += "Datos de la mascota:"+"\n"+chp.showPet();
-		msj += "+----------------------+---------------------------------+";
+		msj = "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
+		msj += "|||                   HISTORIA CLINICA                  |||";
+		msj += "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
+		msj += "el estado de la historia clinica es:"+status();
+		msj += "+-----------------------+---------------------------------+";
+		msj += "Datos de la mascota:"+"\n"+chp;
+		msj += "+-----------------------+---------------------------------+";
 		msj += "Datos del dueño:"+"\n"+chp.dateOwner();
-		msj += "+----------------------+---------------------------------+";
-		msj += "El diagnostico es:"+getDiagnosis+"\n";
-		msj += "+----------------------+---------------------------------+";
-		msj += "Los sintomas que presentaba la mascota:"+getSymptom+"\n";
-		msj += "+----------------------+---------------------------------+";
+		msj += "+-----------------------+---------------------------------+";
+		msj += "El diagnostico es:"+getDiagnosis()+"\n";
+		msj += "+-----------------------+---------------------------------+";
+		msj += "Los sintomas que presentaba la mascota:"+getSymptom()+"\n";
+		msj += "+-----------------------+---------------------------------+";
 		msj += "los medicamentos recetados:";
-		
+		for(int i = 0; i<cure.size(); i++){
+		msj += "\n"+cure.get(i);
+		}
+		msj += "+-----------------------+---------------------------------+";
+		msj += "fecha de entrada:"+entry;
+		msj += "+-----------------------+---------------------------------+";
+		msj += "fecha de salida:";
+		if(out == null){
+			msj += "no se ha dado de alta al animal";
+		}
+		else{
+			msj += "es"+out;
+		}
+		msj += "+-----------------------+---------------------------------+";
+		msj += "costo de la hozpitalizacion"+costHospitalization();
+		msj += "+-----------------------+---------------------------------+";
+		msj += "costo de total de los medicamentos"+calculateCostMedicine();
+		msj += "+-----------------------+---------------------------------+";
+		msj += "TOTAL"+costHospitalization()+calculateCostMedicine()+"$";
+		msj += "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
 		
 		return msj;
 	}
 	
-	
-	public String showClinicHistory(){
-		String msj;
-		
-		msj = "el estado de la hisroria clinica es:"+status+"\n";
-		msj += "el diagnostico es:"+diagnosis+"\n";
-		msj += "los sintomas son:"+symptom+"\n";
-		msj += "la fecha ingreso:"+entry.showDate();
-		
-		return msj;
+	//calcula el costo de todas los medicamentos
+	public double calculateCostMedicine(){
+		double cost = 0.0;
+		for(int k = 0; k<cure.size(); k++){
+			cost += cure.get(k).costMedicine();
+			
+		}
+		return cost;
 	}
 	
-
+	//calcular costo segun el tipo
+	public double costHospitalization(){
+		double cost = 0.0;
+		if(chp.getTypeAnimal() ==1){
+			if (chp.getWeight() >= 1 || chp.getWeight()<=3){
+				cost = 10.000;
+			}
+			else if(chp.getWeight() >= 3.1 || chp.getWeight()<=10){
+				cost =12.000;
+			}
+			else if (chp.getWeight() >= 10.1 || chp.getWeight()<=20){
+				cost =15.000;
+			}
+			else{
+				cost=20.000;
+			}
+		}
+		
+		else if(chp.getTypeAnimal() ==2){
+			if (chp.getWeight() >= 1 || chp.getWeight()<=3){
+				cost = 15.000;
+			}
+			else if(chp.getWeight() >= 3.1 || chp.getWeight()<=10){
+				cost =17.000;
+			}
+			else if (chp.getWeight() >= 10.1 || chp.getWeight()<=20){
+				cost =20.000;
+			}
+			else{
+				cost=25.000;
+			}
+		
+		}
+		
+		else if(chp.getTypeAnimal() ==3){
+			if  (chp.getWeight() >= 1 || chp.getWeight()<=3){
+				cost = 10.000;
+			}
+			else if(chp.getWeight() >= 3.1 || chp.getWeight()<=10){
+				cost =12.000;
+			}
+			else if (chp.getWeight() >= 10.1 || chp.getWeight()<=20){
+				cost =20.000;
+			}
+			else{
+				cost=25.000;
+			}
+		}
+		
+		else{
+			if (chp.getWeight() >= 1 || chp.getWeight()<=3){
+				cost = 10.000;
+			}
+			else if(chp.getWeight() >= 3.1 || chp.getWeight()<=10){
+				cost =17.000;
+			}
+			else if (chp.getWeight() >= 10.1 || chp.getWeight()<=20){
+				cost =30.000;
+			}
+			else{
+				cost=33.000;
+			}
+		}
+		return cost;
+	
+	}
+	
+	//trae los datos de contacto del dueño de la mascota
+	public String dateOwnerPet(){
+		return chp.dateContac();
+	}
+	
+	//ver la mascota con el toString
+	public Pet showPet(){
+		return getChp();
+	}
+	
+	//ver solo nombre de la mascota
+	public String showNamePet(){
+		return chp.getName();
+	}
+	
+	public void addcure(Medicine m1){
+		cure.add(m1);
+	}
+	
+	public void addDateEntry(int day, int month, int year){
+		Date entry = new Date (day, month, year);
+	}
+	
+	//crea fecha de salida y se pone el el set de out
+	public void addDateOut(int day, int month, int year){
+		Date out = new Date (day, month, year);
+		setOut(out);
+	}
+	public void setOut(Date out){
+		this.out = out;
+	}
+	
 }

@@ -9,10 +9,10 @@ public class Room {
 	private int num;
 	
 	//relaciones
-	private Pet hospitalization;
+	private ClinicHistory hospitalization;
 	
 	//constructor
-	public Room (boolean status, int num, Pet hospitalization){
+	public Room (boolean status, int num, ClinicHistory hospitalization){
 		this.status = status;
 		this.num = num;
 		this.hospitalization = hospitalization;
@@ -33,18 +33,18 @@ public class Room {
 		this.num = num;
 	}
 	
-	public Pet getHospitalization(){
+	public ClinicHistory getHospitalization(){
 		return hospitalization;
 		
 	}
-	public void setHospitalization(Pet hospitalization){
+	public void setHospitalization(ClinicHistory hospitalization){
 		this.hospitalization = hospitalization;
 	}
 	
 	//numero del cuarto
 	public String Num(){
 		
-		return "el numero del cuarto es:"+getNum;
+		return "el numero del cuarto es:"+num;
 		
 	}
 	
@@ -53,30 +53,38 @@ public class Room {
 	public String report(){
 		String msj;
 		
-		msj = getNum+"\n";
-		msj += hospitalization.reportPet();
+		msj = num+"\n";
+		msj += hospitalization.showPet();
 		
 		return msj;
 	}
 	
-	//ddadtos del dueño
+	//datos del dueño
 	public String dateContacOwner(){
-		return hospitalization.dateContac();
+		return hospitalization.dateOwnerPet();
 	}
 	
 	//ver los detalles de la mascota que etsa en el cuarto
-	public String showPetinRoom(){
+	public Pet showPetinRoom(){
 	return hospitalization.showPet();
 	}
 	
 	//nombre del animal que esta en el cuarto
 	public String namePet(){
-		return hospitalization.getName();
+		return hospitalization.showNamePet();
 	}
 	
-	//para cambiar el estado de la historia clinica cuando se de de alta al animal 
-	public void statusHist(boolean status){
-		hospitalization.statusHis(status);
+	public void dateOut(Date out){
+		hospitalization.setOut(out);
+		
+	}
+	public void addOut(int day, int month, int year){
+		hospitalization.addDateOut(day, month, year);
 	}
 	
+	public void statusHist (boolean statusH){
+		hospitalization.setStatus(statusH);
+	}
+	
+		
 }

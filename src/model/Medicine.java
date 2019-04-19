@@ -51,5 +51,18 @@ public class Medicine{
 		this.frequency = frequency;
 	}
 	
-
+	//calcula el costo de la medicina
+	public double costMedicine(){
+		return dose*costDose;	
+	}
+	
+	public String toString(){
+		String msj;
+		msj = name;
+		msj += dose;
+		msj += costDose;
+		msj += frequency;
+		return msj;	
+	}
+	
 }

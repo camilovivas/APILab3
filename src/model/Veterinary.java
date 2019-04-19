@@ -9,6 +9,7 @@ public class Veterinary{
 	private Room[] miniRooms;
 	private ArrayList<ClientHuman> service;
 	private ArrayList<ClinicHistory> history;
+	private ArrayList<NewService> otherServices;
 
 	//constructor
 	public Veterinary (String name, String location){
@@ -17,10 +18,9 @@ public class Veterinary{
 		miniRooms = new Room[TOTAL_ROOM];
 		service =  new ArrayList<ClientHuman>();
 		history = new ArrayList<ClinicHistory>();
+		otherServices = new ArrayList<NewService>();
 		
 	}
-	
-	
 	
 	
 	//get y set
@@ -68,11 +68,21 @@ public class Veterinary{
 	}
 	
 	
+	public ArrayList<NewService> getOtherServices(){
+		return otherServices;
+	}
+	public void setOtherServices(ArrayList<NewService> otherServices){
+		this.otherServices = otherServices;
+	}
+	
+	
+	//metodos
+	
 	// mira si el cuarto esta disponible
 	public boolean roomFree(){
 		boolean free = false;
 		for(int i = 0; i<miniRooms.length && !free; i++){
-			if(miniRooms[i].getStatus != false){
+			if(miniRooms[i].getStatus() != false){
 				free = true;
 			}	
 		}
@@ -91,18 +101,16 @@ public class Veterinary{
 	}
 	
 	
-	//crear historia clinica
-	public void addHC(String status, String diagnosis, String symptom, Date entry, Pet chp){
-		
-		ClinicHistory n = new ClinicHistory (status, diagnosis, symptom, entry, chp);
-		history.add(n);
+	//cagregar historia clinica
+	public void addHC(ClinicHistory ch1){
+		history.add(ch1);
 	}
 	
 	
 	//agregar cliente
-	public String addClient (String name, int id, String address, String phone){
+	public String addClient (String name, String id, String address, String phone){
 		String msj;
-		ClientHuman c1 = buscarClient(id);
+		ClientHuman c1 = findCliente(id);
 		if (c1 != null){
 			msj= ("cliente ya existe");
 		}
@@ -117,23 +125,22 @@ public class Veterinary{
 	
 	
 	//eliminar cliente
-	public void deleitClient(int id){
-		(int i = 0; i<service.size(); i++){
+	public void deleitClient(String id){
+		for(int i = 0; i<service.size(); i++){
 			if(service.get(i).getId().equals(id)){
-				servise.remove(i);
+				service.remove(i);
 			}
 		}
 	}
 	
 	
 	//buscar cliente
-	public ClientHuman findCLiente (String Id){
+	public ClientHuman findCliente (String id){
 		boolean continuar = true;
 		ClientHuman aBuscar = null;
 	
 		for(int i = 0 ; i<service.size() && !continuar; i++){
-			//ClientHuman existente = service.get(i);
-			if (service.get(i).getId().equals(id)){
+			if (service.get(i).getId() == id){
 				aBuscar= service.get(i);
 				continuar = false;
 			
@@ -167,7 +174,7 @@ public class Veterinary{
 	
 	
 	public void clinicHistory(int i){
-		history.get(i).showClinicHistory();
+		history.get(i);
 	}
 	
 	//reporte del animal hospitalizado  con historia clinica
@@ -175,7 +182,7 @@ public class Veterinary{
 		String msj;
 		for(int i = 0; i<TOTAL_ROOM; i++){
 			if(miniRooms[i].getStatus() == false){
-				msj += rooms[i].report();
+				msj += miniRooms[i].report();
 			}
 				
 			else{
@@ -194,9 +201,9 @@ public class Veterinary{
 	}
 	
 	
-	//agregar mascotas
-	public void createPet(int j){
-	 service.get(j).addPet();
+	//agregar mascotas al ultimo cliente, ya que siempre se agrega el nuevo cliente en la ultima casilla
+	public void createPet(String name, int typeAnimal, int age, double weight,ClientHuman ownerP){
+	 service.size().addPet(name, typeAnimal, age, weight, ownerP);
 		
 	}
 	
@@ -209,7 +216,7 @@ public class Veterinary{
 	
 	//al dar de alta se óne el cuarto disponibre
 	public void setRoomFree(int num){
-		miniRooms[num-1].setStatus = true;
+		miniRooms[num-1].setStatus(true);
 		
 	}
 	
@@ -220,16 +227,27 @@ public class Veterinary{
 		miniRooms[num-1].statusHist(status);
 	}
 	
+	//muestra los numbres de las mascotas hospiitalizadas con el numero de cuarto
 	public String showNameForAllPetsHospi(){
 		String msj;
 		
 		for(int i = 0; i <TOTAL_ROOM; i++){
-			msj += "en el cuarto "+i+"esta la mascota:"+miniRooms[i].namePet();
+			msj += "\n"+"en el cuarto "+i+"esta la mascota:"+miniRooms[i].namePet();
 		}
 		return msj;
 	}
 	
-	//muestra informacion para eliminar las mascotas
+	//muestra los numbres de las mascotas hospiitalizadas sin el numero de cuarto
+	public String showNameForAllPetsHospisinNum(){
+		String msj;
+		
+		for(int i = 0; i <TOTAL_ROOM; i++){
+			msj += "\n"+miniRooms[i].namePet();
+		}
+		return msj;
+	}
+	
+	//muestra informacion para dar de alta las mascotas
 	public String showNameForDeleit(){
 		String msj;
 		
@@ -239,7 +257,7 @@ public class Veterinary{
 		return msj;
 	}
 	
-	//mira el historial de historias
+	//mira el historial de historias (fue eliminado)
 	public String reporsHistory(){
 		String msj;
 		if (history.isEmpty()){
@@ -248,25 +266,44 @@ public class Veterinary{
 		}
 		else{
 			for(int i = 0; i<history.size(); i++){
-				msj += history.get(i).ShowReportClinicHistory();
+				msj += history.get(i); //lee el toString
 			}
 			
 		}
 		return msj;
 	}
 	
-	
 	//elimina mascotas 
 	public void deleitPet(int id, String name){
-		(int i = 0; i<service.size(); i++){
+		for(int i = 0; i<service.size(); i++){
 			if(service.get(i).getId().equals(id)){
 			
 				service.get(i).deleitPet(name);
-				setRoomFree();
 			}
 		}
 		
 	}
+	
+	
+	public void addOut(int numero, int day, int month, int year){
+		miniRooms[numero-1].addOut(day, month, year);
+	}
+	
+	//ganancias por hospitalizacion
+	public double erningsOfHosp(){
+		double cost =0.0;
+		for(int i = 0; i<history.size(); i++){
+			cost += history.get(i).costHospitalization();
+		}
+		return cost;
+	}
+	
+	//modifica el numeoro de telefono y direccion
+	public void modify(int num, String phone, String address){
+		service.get(num).setAddress(address),setPhone(phone);
+		
+	}
+	
 	
 	
 }

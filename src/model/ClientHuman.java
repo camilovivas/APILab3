@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ClientHuman {
 	//atributos
 	private String name;
-	private int id;
+	private String id;
 	private String address;
 	private	String phone;
 	private ArrayList<Pet> ownerC;
@@ -13,7 +13,7 @@ public class ClientHuman {
 
 	
 	//constructor
-	public ClientHuman (String name, int id, String address, String phone){
+	public ClientHuman (String name, String id, String address, String phone){
 	
 		this.name = name;
 		this.id = id;
@@ -31,10 +31,10 @@ public class ClientHuman {
 	}
 	
 	
-	public int getId(){
+	public String getId(){
 		return id;
 	}
-	public void setId (int id){
+	public void setId (String id){
 		this.id = id;
 	}
 	
@@ -68,9 +68,9 @@ public class ClientHuman {
 	
 	//muestra los datos de contacto
 	public String showDateContac(){
-		String msj = "los datos de contacto del cliente"+ getName+"son:\n";
-		msj += "-"+getAddress;
-		msj += "-"+getPhone;
+		String msj = "los datos de contacto del cliente"+name+"son:\n";
+		msj += "-"+address;
+		msj += "-"+phone;
 	
 		return msj;
 	}
@@ -85,9 +85,9 @@ public class ClientHuman {
 		return msj;
 	}
 	//agrega las mascotas
-	public void addPet(String name, int typeAnimal, int age, double weight, ClientHuman ownerP, ClinicHistory report){
+	public void addPet(String name, int typeAnimal, int age, double weight, ClientHuman ownerP){
 		
-		Pet nuevo = new Pet(name, typeAnimal, age, weight, ownerP, report);
+		Pet nuevo = new Pet(name, typeAnimal, age, weight, ownerP);
 		ownerC.add(nuevo);
 		
 	}
@@ -96,7 +96,7 @@ public class ClientHuman {
 	public void deleitPet(String name){
 		String msj;
 		for(int i = 0; i<ownerC.size(); i++){
-			if(ownerC.get(i).getName.equals(name)){
+			if(ownerC.get(i).getName().equals(name)){
 				ownerC.remove(i);
 				
 			}
@@ -106,7 +106,7 @@ public class ClientHuman {
 	}
 	
 	//muestra todo el cliente
-	public String showClient(){
+	public String toString(){
 		String msj;
 		msj = "Nombre:"+"\n"+getName();
 		msj += "Identificado por el numero:"+"\n"+getId();
