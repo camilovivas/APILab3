@@ -1,6 +1,9 @@
 package model;
 import java.util.ArrayList;
-
+import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class ClinicHistory{
 	
@@ -131,7 +134,7 @@ public class ClinicHistory{
 		msj += "+-----------------------+---------------------------------+";
 		msj += "costo de total de los medicamentos"+calculateCostMedicine();
 		msj += "+-----------------------+---------------------------------+";
-		msj += "TOTAL"+costHospitalization()+calculateCostMedicine()+"$";
+		msj += "TOTAL"+calculateEarnings()+"$";
 		msj += "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
 		
 		return msj;
@@ -145,6 +148,22 @@ public class ClinicHistory{
 			
 		}
 		return cost;
+	}
+	
+	
+	//preguntar al profe para ver con cual multiplico el costo
+	public long daysOfHosp(){
+		long days;
+		if(out ==null){
+			days = 1;
+		}
+		else{
+			LocalDate ld1 = LocalDate.of(entry.getYear(), entry.getMonth(), entry.getDay());
+			LocalDate ld2 = LocalDate.of(out.getYear(), out.getMonth(), out.getDay());
+		
+			days= ld1.until(ld2, ChronoUnit.DAYS);
+		}
+		return days;
 	}
 	
 	//calcular costo segun el tipo
@@ -212,6 +231,11 @@ public class ClinicHistory{
 		}
 		return cost;
 	
+	}
+	
+	//calcula las ganancias por hospitalizacion mas las de la medicina
+	public double calculateEarnings(){
+		return calculateCostMedicine()+costHospitalization();
 	}
 	
 	//trae los datos de contacto del dueño de la mascota

@@ -118,9 +118,19 @@ public class Veterinary{
 			msj =("registro exitoso");
 			ClientHuman newClient = new ClientHuman(name, id, address, phone);
 			service.add(newClient);
+			
 		}
 		
 		return msj;
+	}
+	
+	public void addPet(String id, String name, int typeAnimal, int age, double weight, double height){
+		ClientHuman temp = findCliente(id);
+		if (temp != null){
+			Pet p1 = new Pet(name, typeAnimal, age, weight, height, temp);
+			temp.addPets(p1);
+		}
+		
 	}
 	
 	
@@ -151,11 +161,26 @@ public class Veterinary{
 		return aBuscar;
 	}
 	
+	//actualiza los datos de un cliente
+	public void update (String id, String phone, String address){
+		boolean continuar = true;
+			
+		for(int i = 0 ; i<service.size() && !continuar; i++){
+			if (service.get(i).getId() == id){
+				continuar = false;
+				service.get(i).setAddress(address);
+				service.get(i).setPhone(phone);
+			}
+		
+		}		
+	
+	}
+	
 	
 	//ver el numero del cuarto en que se encuentra la mascota
 	public String showPetsHosp(String name){
 		boolean esta = false;
-		String msj;
+		String msj= " ";
 		
 		for(int k = 0;k<TOTAL_ROOM && !esta; k++){
 			
@@ -168,8 +193,9 @@ public class Veterinary{
 				msj = "la mascota no esta hospitalizada";
 				
 			}
-		return msj;
+			
 		}
+		return msj;
 	}
 	
 	
@@ -179,7 +205,7 @@ public class Veterinary{
 	
 	//reporte del animal hospitalizado  con historia clinica
 	public String report(){
-		String msj;
+		String msj = " ";
 		for(int i = 0; i<TOTAL_ROOM; i++){
 			if(miniRooms[i].getStatus() == false){
 				msj += miniRooms[i].report();
@@ -200,12 +226,6 @@ public class Veterinary{
 		miniRooms[j].Num();
 	}
 	
-	
-	//agregar mascotas al ultimo cliente, ya que siempre se agrega el nuevo cliente en la ultima casilla
-	public void createPet(String name, int typeAnimal, int age, double weight,ClientHuman ownerP){
-	 service.size().addPet(name, typeAnimal, age, weight, ownerP);
-		
-	}
 	
 	//tiene los datos de contacto del dueño de cada mascota que hay hospitalizada
 	public String dateContac(int num){
@@ -273,18 +293,8 @@ public class Veterinary{
 		return msj;
 	}
 	
-	//elimina mascotas 
-	public void deleitPet(int id, String name){
-		for(int i = 0; i<service.size(); i++){
-			if(service.get(i).getId().equals(id)){
-			
-				service.get(i).deleitPet(name);
-			}
-		}
-		
-	}
 	
-	
+	//agrega la fecha en la que se le dio de alta
 	public void addOut(int numero, int day, int month, int year){
 		miniRooms[numero-1].addOut(day, month, year);
 	}
@@ -298,12 +308,101 @@ public class Veterinary{
 		return cost;
 	}
 	
-	//modifica el numeoro de telefono y direccion
-	public void modify(int num, String phone, String address){
-		service.get(num).setAddress(address),setPhone(phone);
-		
+	//ganancias por hospitalizacion y medicina de todas las historias
+	public double earningsOfHosAndMed(){
+		double cost =0.0;
+		for(int k = 0; k<history.size(); k++){
+			cost += history.get(k).calculateEarnings();
+		}
+		return cost;
 	}
 	
+	//estos 6 metodos calcula la ganancias por cada servicio y el total
+	public double earningforservice1(){
+		double cost =0.0;
+		for(int i = 0 ; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.BATH_VETERINARY);{
+				cost += otherServices.get(i).getCost();
+				
+			}
+			return cost;
+			
+		}
+		
+	}
+	public double earningforservice2(){
+		double cost =0.0;
+		for(int i = 0 ; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.BATH_DOMICILE);{
+				cost += otherServices.get(i).getCost();
+				
+			}
+			return cost;
+			
+		}
+		
+	}
+	public double earningforservice3(){
+		double cost =0.0;
+		for(int i = 0 ; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.NAIL_CUTTING);{
+				cost += otherServices.get(i).getCost();
+				
+			}
+			return cost;
+			
+		}
+		
+	}
+	public double earningforservice4(){
+		double cost =0.0;
+		for(int i = 0 ; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.DENTAL_PROPHYLAXIS);{
+				cost += otherServices.get(i).getCost();
+				
+			}
+			return cost;
+			
+		}
+		
+	}
+	public double earningforservice5(){
+		double cost =0.0;
+		for(int i = 0 ; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.VACCINATION);{
+				cost += otherServices.get(i).getCost();
+				
+			}
+			return cost;
+			
+		}
+		
+	}
+	public double earningforallservices(){
+		return earningforservice1()+earningforservice2()+earningforservice3()+earningforservice4()+earningforservice5();
+	}
+	
+	//ganancias d ela veterinaria
+	public double earningsofVeterynary(){
+		return earningforallservices()+earningsOfHosAndMed();
+	}
+	
+	//los siguientes metodos 5 calcularan el promedio de ganancias
+	public double average1(){
+		return earningforservice1()/otherServices.size();
+	}
+	public double average2(){
+		return earningforservice2()/otherServices.size();
+	}
+	public double average3(){
+		return earningforservice3()/otherServices.size();
+	}
+	public double average4(){
+		return earningforservice4()/otherServices.size();
+	}
+	public double average5(){
+		return earningforservice5()/otherServices.size();
+	}
 	
 	
 }

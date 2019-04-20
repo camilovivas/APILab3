@@ -11,16 +11,18 @@ public class Pet{
 	private int typeAnimal;
 	private int age;
 	private double weight;
+	private double height;
 	
 	//relaciones
 	private ClientHuman ownerP;
 		
 	//constructor
-	public Pet (String name, int typeAnimal, int age, double weight, ClientHuman ownerP){
+	public Pet (String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){
 		this.name = name;
 		this.typeAnimal = typeAnimal;
 		this.age = age;
 		this.weight = weight;
+		this.height = height;
 		this.ownerP = ownerP;
 	}
 	
@@ -48,11 +50,20 @@ public class Pet{
 		this.age = age;
 	}
 	
+	
 	public double getWeight(){
 		return weight;
 	}
 	public void setWeight (double weight){
 		this.weight = weight;
+	}
+	
+	
+	public double getHeight(){
+		return height;
+	}
+	public void setHeight (double height){
+		this.height = height;
 	}
 	
 	
@@ -90,9 +101,11 @@ public class Pet{
 	public String toString(){
 		String msj;
 		msj ="Nombre:"+name+"\n";
-		msj +="tipo"+detecTypeAnimal()+"\n";
-		msj +="edad"+age+"\n";
-		msj +="peso"+weight+"\n";
+		msj +="tipo;"+detecTypeAnimal()+"\n";
+		msj +="edad:"+age+"\n";
+		msj +="peso:"+weight+"\n";
+		msj += "altura:"+height+"\n";
+		msj += "IMC:"+imc()+"\n";
 		
 		return msj;
 	}
