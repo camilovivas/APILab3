@@ -1,3 +1,9 @@
+/**
+*Universidad Icesi (Cali-Colombia)
+*laboratorio 4 APO I
+*@autor: Camilo Vivas <camilo-152000@hotmail.com>
+*Date:
+*/
 package model;
 import java.util.ArrayList;
 
@@ -12,6 +18,9 @@ public class Room {
 	private ClinicHistory hospitalization;
 	
 	//constructor
+/**
+*Description This is the build of class Room
+*/	
 	public Room (boolean status, int num, ClinicHistory hospitalization){
 		this.status = status;
 		this.num = num;

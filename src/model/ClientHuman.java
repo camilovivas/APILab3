@@ -1,7 +1,16 @@
+/**
+*Universidad Icesi (Cali-Colombia)
+*laboratorio 4 APO I
+*@autor: Camilo Vivas <camilo-152000@hotmail.com>
+*Date:
+*/
 package model;
 import java.util.ArrayList;
 
-
+/**
+*
+*
+*/
 public class ClientHuman {
 	//atributos
 	private String name;
@@ -12,7 +21,9 @@ public class ClientHuman {
 	//relaciones
 
 	
-	//constructor
+/**
+*Description This is the build of date
+*/
 	public ClientHuman (String name, String id, String address, String phone){
 	
 		this.name = name;
@@ -21,51 +32,89 @@ public class ClientHuman {
 		this.phone = phone;
 		ownerC = new ArrayList<Pet>();
 	}
-	
+/**
+*
+*
+*/	
 	//get y set
 	public String getName(){
 		return name;
 	}
+/**
+*
+*
+*/
 	public void setName (String name){
 		this.name = name;
 	}
-	
+/**
+*
+*
+*/	
 	
 	public String getId(){
 		return id;
 	}
+/**
+*
+*
+*/	
 	public void setId (String id){
 		this.id = id;
 	}
-	
+/**
+*
+*
+*/	
 	
 	public String getAddress(){
 		return address;
 	}
+/**
+*
+*
+*/	
 	public void setAddress (String address){
 		this. address = address;
 	}
-	
+/**
+*
+*
+*/	
 	
 	public String getPhone(){
 		return phone;
 	}
+/**
+*
+*
+*/	
 	public void setPhone(String phone){
 		this.phone = phone;
 	}
-	
+/**
+*
+*
+*/	
 	
 	public ArrayList<Pet> getownerC(){
 		
 		return ownerC;
 	}
+/**
+*
+*
+*/	
 	public void setOwnerC (ArrayList<Pet> ownerC){
 		
 		this.ownerC = ownerC;
 	}
 	
 	//metodos
-	
+/**
+*
+*
+*/
 	//muestra los datos de contacto
 	public String showDateContac(){
 		String msj = "los datos de contacto del cliente"+name+"son:\n";
@@ -74,7 +123,10 @@ public class ClientHuman {
 	
 		return msj;
 	}
-	
+/**
+*
+*
+*/	
 	public String showPetsHos(){
 		String msj = " ";
 		for(int j = 0 ; j<ownerC.size(); j++){
@@ -84,6 +136,10 @@ public class ClientHuman {
 		
 		return msj;
 	}
+/**
+*
+*
+*/	
 	//agrega las mascotas
 	public void addPet(String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){
 		
@@ -91,11 +147,17 @@ public class ClientHuman {
 		ownerC.add(nuevo);
 		
 	}
+/**
+*
+*
+*/	
 	public void addPets(Pet p1){
 		ownerC.add(p1);
 	}
-	
-	
+/**
+*
+*
+*/	
 	//muestra todo el cliente
 	public String toString(){
 		String msj;

@@ -1,3 +1,9 @@
+/**
+*Universidad Icesi (Cali-Colombia)
+*laboratorio 4 APO I
+*@autor: Camilo Vivas <camilo-152000@hotmail.com>
+*Date:
+*/
 package model;
 import java.util.ArrayList;
 
@@ -17,6 +23,9 @@ public class Pet{
 	private ClientHuman ownerP;
 		
 	//constructor
+/**
+*Description This is the build of class Pet
+*/	
 	public Pet (String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){
 		this.name = name;
 		this.typeAnimal = typeAnimal;

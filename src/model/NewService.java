@@ -1,3 +1,9 @@
+/**
+*Universidad Icesi (Cali-Colombia)
+*laboratorio 4 APO I
+*@autor: Camilo Vivas <camilo-152000@hotmail.com>
+*Date:
+*/
 package model;
 import java.util.*;
 
@@ -15,7 +21,12 @@ public class NewService{
 	private String idWoner;
 	private String namePet;
 	
+	//relacion
+	private Date register;
 	//constructor
+/**
+*Description This is the build of class NewService
+*/
 	public NewService(char typeService){
 		this.typeService = typeService;
 		this.cost = calculateCost();
@@ -31,16 +42,20 @@ public class NewService{
 		return cost;
 	}
 	
+	public Date getRegister(){
+		return register;	
+	}
+	
 	//metodos
 	
 	
 	public String toString(){
 		String msj;
 		msj = "el tipo de servicio:"+typeService;
-		msj += "el costo:";
-		msj += "ID del cliente";
-		msj += "nombre mascota";
-		
+		msj += "el costo:"+cost;
+		msj += "ID del cliente"+idWoner;
+		msj += "nombre mascota"+namePet;
+		msj += "fecha:"+getRegister();
 		return msj;
 		
 	}

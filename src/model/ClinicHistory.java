@@ -1,3 +1,9 @@
+/**
+*Universidad Icesi (Cali-Colombia)
+*laboratorio 4 APO I
+*@autor: Camilo Vivas <camilo-152000@hotmail.com>
+*Date:
+*/
 package model;
 import java.util.ArrayList;
 import java.time.temporal.ChronoUnit;
@@ -19,7 +25,9 @@ public class ClinicHistory{
 	private Date out;
 	private Pet chp;
 	
-	//constructor
+/**
+*Description This is the build of class ClinicHistory
+*/
 	public ClinicHistory (boolean status, String diagnosis, String symptom, Date entry, Date out, Pet chp){
 		this.status = status;
 		this.diagnosis = diagnosis;
@@ -33,60 +41,110 @@ public class ClinicHistory{
 	
 	
 	//get y set
+/**
+*
+*
+*/	
 	public boolean getStatus (){
 		return status;
 	}
+/**
+*
+*
+*/	
 	public void setStatus (boolean status){
 		this.status = status;
 	}
 	
-	
+/**
+*
+*
+*/	
 	public String getDiagnosis (){
 		return diagnosis;
 	}
+/**
+*
+*
+*/	
 	public void setDiagnosis (String diagnosis){
 		this.diagnosis = diagnosis;
 	}
 	
-	
+/**
+*
+*
+*/
 	public String getSymptom (){
 		return symptom;
 	}
+/**
+*
+*
+*/
 	public void setSymptom (String symptom){
 		this.symptom = symptom;
 	}
 	
-	
+/**
+*
+*
+*/	
 	public Date getEntry(){
 		return entry;
 	}
+/**
+*
+*
+*/	
 	public void setEntry (Date entry){
 		this.entry = entry;
 	}
 	
-	
+/**
+*
+*
+*/	
 	public Date getOut(){
 		return out;
 	}
 	
-	
+/**
+*
+*
+*/	
 	public Pet getChp(){
 		return chp;
 	}
+/**
+*
+*
+*/	
 	public void setChp(Pet chp){
 		this.chp = chp;
 	}
 	
-	
+/**
+*
+*
+*/	
 	public ArrayList<Medicine>  getCure(){
 		return cure;
 	}
+/**
+*
+*
+*/	
 	public void setCure (ArrayList<Medicine> cure){
 		this.cure = cure;
 	}
 	
 	
 	//metodos	
+/**
+*
+*
+*/
 	public String status(){
 		String msj;
 		if(status == true){
@@ -98,7 +156,10 @@ public class ClinicHistory{
 		return msj;
 	}
 	
-	
+/**
+*
+*
+*/	
 	public String toString(){
 		
 		String msj;
@@ -139,7 +200,10 @@ public class ClinicHistory{
 		
 		return msj;
 	}
-	
+/**
+*
+*
+*/
 	//calcula el costo de todas los medicamentos
 	public double calculateCostMedicine(){
 		double cost = 0.0;
@@ -150,7 +214,10 @@ public class ClinicHistory{
 		return cost;
 	}
 	
-	
+/**
+*
+*
+*/	
 	//preguntar al profe para ver con cual multiplico el costo
 	public long daysOfHosp(){
 		long days;
@@ -166,6 +233,10 @@ public class ClinicHistory{
 		return days;
 	}
 	
+/**
+*
+*
+*/
 	//calcular costo segun el tipo
 	public double costHospitalization(){
 		double cost = 0.0;
@@ -232,40 +303,65 @@ public class ClinicHistory{
 		return cost;
 	
 	}
-	
+/**
+*
+*
+*/	
 	//calcula las ganancias por hospitalizacion mas las de la medicina
 	public double calculateEarnings(){
 		return calculateCostMedicine()+costHospitalization();
 	}
-	
+/**
+*
+*
+*/	
 	//trae los datos de contacto del dueño de la mascota
 	public String dateOwnerPet(){
 		return chp.dateContac();
 	}
-	
+/**
+*
+*
+*/	
 	//ver la mascota con el toString
 	public Pet showPet(){
 		return getChp();
 	}
-	
+/**
+*
+*
+*/	
 	//ver solo nombre de la mascota
 	public String showNamePet(){
 		return chp.getName();
 	}
-	
+/**
+*
+*
+*/	
 	public void addcure(Medicine m1){
 		cure.add(m1);
 	}
-	
+/**
+*
+*
+*/	
 	public void addDateEntry(int day, int month, int year){
 		Date entry = new Date (day, month, year);
 	}
-	
+/**
+*
+*
+*/	
 	//crea fecha de salida y se pone el el set de out
 	public void addDateOut(int day, int month, int year){
 		Date out = new Date (day, month, year);
 		setOut(out);
 	}
+/**
+*
+*
+*/	
 	public void setOut(Date out){
 		this.out = out;
 	}

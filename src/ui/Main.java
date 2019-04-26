@@ -1,3 +1,9 @@
+/**
+*Universidad Icesi (Cali-Colombia)
+*laboratorio 4 APO I
+*@autor: Camilo Vivas <camilo-152000@hotmail.com>
+*Date:
+*/
 package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -37,14 +43,14 @@ public class Main {
 			System.out.println("5.Dar de alta a una mascota");
 			System.out.println("6.Ver ingresos por conceptos de hospitalizacion");// recorrer las historias e ir sumando el costo
 			System.out.println("7.Ver el numero de mini cuarto de una mascota hospitalizada");
-			System.out.println("8.ver el imc de una mascota");
+			
 			System.out.println("9.actualizar datos de un cliente registrado");//ingrese el id del cliente a actualizar
 			System.out.println("10.agregar nuevos medicamento a una historia clinica existente");//recorrer el historiaL yy modificar las medicinas
 			System.out.println("11.agregar nuevas notas al diagnostico de una mascota hospitalizada");//me voy a los miniroom y modifico
 			System.out.println("12.agregar un nuevo sintoma a una mascota hospitalizada");
 			System.out.println("13.Calcular los ingresos por servicios");
 			System.out.println("14.Calcular los ingresos totales de la veterinaria");
-			System.out.println("15.Agregar al sistema nuevos servicios prestados por la veterinaria, es decir los servicios vendidos no nuevos tipos de servicios");
+			System.out.println("15.Agregar al sistema nuevos servicios prestados por la veterinaria, es decir los servicios vendidos no nuevos tipos de servicios");//que registre un servicio existente
 			System.out.println("16.Promedio de ingresos por servicio");
 			System.out.println("17.Promedio de ingresos de la veterinaria en una semana");
 			System.out.println("18.Reporte de servicios prestados dada una fecha inicial y una fecha final");
@@ -87,7 +93,7 @@ public class Main {
 				System.out.println("las mascotas hospitalizadas son:");// los nombres de las mascotas hospitalizadas
 				System.out.println(relacion.showNameForAllPetsHospisinNum());
 				System.out.println("ingrese el nombre de la mascota abuscar...");
-				String nameFind = lector.next();
+				String nameFind = lector.nextLine();
 				relacion.showPetsHosp(nameFind);
 			
 				break;
@@ -109,29 +115,29 @@ public class Main {
 				case 10
 				System.out.println("estas son las mascotas hospitalizadas, ingrese el numero de la cual quiere agregar un medicamento");
 				System.out.println(relacion.showNameForAllPetsHospi());
-				int option = nextInt();
+				int option = lector.nextInt();
 				System.out.println("ingrese el nombre del nuevo medicamento");
 				String name = lector.nextLine();
 				System.out.println("ingrese la cantidad en numeros");
-				double dose = nextDouble();
+				double dose = lector.nextDouble();
 				System.out.println("ingrese el costo por dosis");
-				double costDose = nextDouble();
+				double costDose = lector.nextDouble();
 				nextDouble();ingrese la frequencia");
-				int frequency = nextInt();
+				int frequency = lector.nextInt();
 				
 				break;
 				
 				case 11
 				System.out.println("estas son las mascotas hospitalizadas, ingrese el numero de la cual quiere agregar un diagnostico");
 				System.out.println(relacion.showNameForAllPetsHospi());
-				int option = nextInt();
+				int option = lector.nextInt();
 				System.out.println("ingrese el diagnostico");
 				break;
 				
 				case 12
 				System.out.println("estas son las mascotas hospitalizadas, ingrese el numero de la cual quiere agregar un sintoma");
 				System.out.println(relacion.showNameForAllPetsHospi());
-				int option = nextInt();
+				int option = lector.nextInt();
 				break;
 				
 				case 13
@@ -172,9 +178,26 @@ public class Main {
 				break;
 				
 				case 17
+				System.out.println("el promedio de ingresos en esta semana fue:");
 				break;
 				
 				case 18
+				System.out.println("ingrese la fecha inicial");
+				System.out.println("ingrese el dia");
+				int day =lector.nextInt();
+				System.out.println("ingrese el mes");
+				int month = lector.nextInt();
+				System.out.println("ingrese el año");
+ 				int year = lector.nextInt();
+				
+				System.out.println("ingrese la fecha final");
+				System.out.println("ingrese el dia");
+				int day =lector.nextInt();
+				System.out.println("ingrese el mes");
+				int month = lector.nextInt();
+				System.out.println("ingrese el año");
+ 				int year = lector.nextInt();
+				break;
 				break;
 				
 				case 19:

@@ -1,5 +1,14 @@
+/**
+*Universidad Icesi (Cali-Colombia)
+*laboratorio 4 APO I
+*@autor: Camilo Vivas <camilo-152000@hotmail.com>
+*Date:
+*/
 package model;
-
+/**
+*Description This class 
+*
+*/
 public class Medicine{
 	//atributos
 	
@@ -12,6 +21,9 @@ public class Medicine{
 	
 	
 	//metodos
+/**
+*Description This is the build of class Medicine
+*/
 	public Medicine (String name, double dose, double costDose, int frequency){
 		this.name = name;
 		this.dose = dose;

@@ -1,5 +1,15 @@
+/**
+*Universidad Icesi (Cali-Colombia)
+*laboratorio 4 APO I
+*@autor: Camilo Vivas <camilo-152000@hotmail.com>
+*Date:
+*/
 package model;
 import java.util.ArrayList;
+import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Veterinary{
 	public static final int TOTAL_ROOM = 8;
@@ -12,6 +22,9 @@ public class Veterinary{
 	private ArrayList<NewService> otherServices;
 
 	//constructor
+/**
+*Description This is the build of class Veterinary
+*/	
 	public Veterinary (String name, String location){
 		this.name = name;
 		this.location = location;
@@ -402,6 +415,29 @@ public class Veterinary{
 	}
 	public double average5(){
 		return earningforservice5()/otherServices.size();
+	}
+	
+	//calcular ganancias con fecha inicial y fecha final
+	public double  calculateEarninWeek(int dayI, int monthI, int yearI, int dayF, int monthF, int yearF ){
+		Date nI = new Date(dayI, monthI, yearI);//borrar
+		Date nF = new Date(dayF, monthF, yearF);//borrar
+		
+		LocalDate ld1 = LocalDate.of(yearI, monthI, dayI);
+		LocalDate ld2 = LocalDate.of(yearF, monthF, dayF);
+		LocalDate ld = LocalDate.of(2019, 1, 1);//preguntar al profesor si existe una herramienta para el año actual
+		
+		long daysI = ld.until(ld1, ChronoUnit.DAYS);
+		long daysE = ld.until(ld2, ChronoUnit.DAYS);
+		int earning = 0;
+		for(int i = 0; i<history.size(); i++){
+			LocalDate l = LocalDate.of(history.get(i).getEntry().getYear(), history.get(i).getEntry().getMonth(), history.get(i).getEntry().getDay());
+			long daysl = ld.until(l, ChronoUnit.DAYS);
+			if(daysl> daysI && daysl <daysE){
+				earning += history.get(i).calculateEarnings();
+			}
+		}
+		return earning;
+		
 	}
 	
 	
