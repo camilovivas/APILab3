@@ -6,8 +6,7 @@
 */
 package model;
 /**
-*Description This class 
-*
+*Description This class have information above the medicines of the pets 
 */
 public class Medicine{
 	//atributos
@@ -23,6 +22,10 @@ public class Medicine{
 	//metodos
 /**
 *Description This is the build of class Medicine
+*@param name the name of medicines
+*@param dose the quantity 
+*@param costDose the cost for dose
+*@param frequency times that the medicine should be taken daily
 */
 	public Medicine (String name, double dose, double costDose, int frequency){
 		this.name = name;
@@ -35,6 +38,10 @@ public class Medicine{
 	public String getName(){
 		return name;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setName (String name){
 		this.name = name;
 	}
@@ -43,6 +50,10 @@ public class Medicine{
 	public double getDose (){
 		return dose;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setDose (double dose){
 		this.dose = dose;
 	}
@@ -51,6 +62,10 @@ public class Medicine{
 	public double getCostDose(){
 		return costDose;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setCostDose (double costDose){
 		this.costDose = costDose;
 	}
@@ -59,6 +74,10 @@ public class Medicine{
 	public int getFrequency(){
 		return frequency ;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setFrequency (int frequency){
 		this.frequency = frequency;
 	}

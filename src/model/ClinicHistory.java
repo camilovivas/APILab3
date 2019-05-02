@@ -10,7 +10,9 @@ import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
+/**
+*Description This class have information above the clinic history
+*/
 public class ClinicHistory{
 	
 	//atributos
@@ -27,6 +29,12 @@ public class ClinicHistory{
 	
 /**
 *Description This is the build of class ClinicHistory
+*@param status the status of the clinic history
+*@param diagnosis the diagnosis of the pet hospitalized
+*@param symptom the symptom of the pet hospitalized
+*@param entry the date when was hospitalized
+*@param out the date when discharge from the veterinary
+*@param chp pet hospitalized
 */
 	public ClinicHistory (boolean status, String diagnosis, String symptom, Date entry, Date out, Pet chp){
 		this.status = status;
@@ -142,8 +150,8 @@ public class ClinicHistory{
 	
 	//metodos	
 /**
-*
-*
+*Description This method detected the status of clinic bistory
+*@return String that indiques the status of clinic bistory
 */
 	public String status(){
 		String msj;

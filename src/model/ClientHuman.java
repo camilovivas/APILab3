@@ -8,8 +8,7 @@ package model;
 import java.util.ArrayList;
 
 /**
-*
-*
+*Description This class have information of all clients in the veterinary
 */
 public class ClientHuman {
 	//atributos
@@ -23,6 +22,10 @@ public class ClientHuman {
 	
 /**
 *Description This is the build of date
+*@param name the name of client
+*@param id the idetification of client 
+*@param sddress the address of the client´s house
+*@param phone number of phone of client 
 */
 	public ClientHuman (String name, String id, String address, String phone){
 	
@@ -42,7 +45,7 @@ public class ClientHuman {
 	}
 /**
 *
-*
+*@param
 */
 	public void setName (String name){
 		this.name = name;
@@ -57,7 +60,7 @@ public class ClientHuman {
 	}
 /**
 *
-*
+*@param
 */	
 	public void setId (String id){
 		this.id = id;
@@ -72,7 +75,7 @@ public class ClientHuman {
 	}
 /**
 *
-*
+*@param
 */	
 	public void setAddress (String address){
 		this. address = address;
@@ -87,7 +90,7 @@ public class ClientHuman {
 	}
 /**
 *
-*
+*@param
 */	
 	public void setPhone(String phone){
 		this.phone = phone;
@@ -103,7 +106,7 @@ public class ClientHuman {
 	}
 /**
 *
-*
+*@param
 */	
 	public void setOwnerC (ArrayList<Pet> ownerC){
 		
@@ -112,8 +115,9 @@ public class ClientHuman {
 	
 	//metodos
 /**
-*
-*
+*Description This method show the dates of contact of the client
+*pre: the address and phone must be no null
+*@return a String that show the dates if contact
 */
 	//muestra los datos de contacto
 	public String showDateContac(){
@@ -124,8 +128,9 @@ public class ClientHuman {
 		return msj;
 	}
 /**
-*
-*
+*Description This method show the pets of the client
+*pre: the pet must be no null
+*@return a String that show the names of the pets
 */	
 	public String showPetsHos(){
 		String msj = " ";
@@ -137,8 +142,14 @@ public class ClientHuman {
 		return msj;
 	}
 /**
-*
-*
+*Description this method add the pets to the arrayList of your owner
+*@param name the name of pet
+*@param typeAnimal the type animal that belongs
+*@param age the age of pet
+*@param weight the weight of pet
+*@param height the height of pet
+*@param ownerP the owner of pet
+*post: the pet has been added
 */	
 	//agrega las mascotas
 	public void addPet(String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){

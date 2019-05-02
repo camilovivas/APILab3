@@ -6,7 +6,9 @@
 */
 package model;
 import java.util.ArrayList;
-
+/**
+*Description Thhis class have information above the rooms of vererinary and clinic history of the pets hospitalized
+*/
 
 public class Room {
 	
@@ -31,6 +33,10 @@ public class Room {
 	public boolean getStatus(){
 		return status;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setStatus(boolean status){
 		this.status = status;
 	}
@@ -38,6 +44,10 @@ public class Room {
 	public int getNum(){
 		return num;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setNum (int num){
 		this.num = num;
 	}
@@ -46,6 +56,10 @@ public class Room {
 		return hospitalization;
 		
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setHospitalization(ClinicHistory hospitalization){
 		this.hospitalization = hospitalization;
 	}

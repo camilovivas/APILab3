@@ -10,7 +10,9 @@ import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
+/**
+*Description This is the main class, have information of all veterynary 
+*/
 public class Veterinary{
 	public static final int TOTAL_ROOM = 8;
 	//atributos
@@ -24,6 +26,8 @@ public class Veterinary{
 	//constructor
 /**
 *Description This is the build of class Veterinary
+*@param name the name of the veterynary
+*@param location the locationn of th veterynary
 */	
 	public Veterinary (String name, String location){
 		this.name = name;
@@ -40,6 +44,10 @@ public class Veterinary{
 	public String getName(){
 		return name;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setName (String name){
 		this.name = name;
 	}
@@ -48,6 +56,10 @@ public class Veterinary{
 	public String getLocation(){
 		return location;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setLocation (String location){
 		this.location = location;
 	}
@@ -57,6 +69,10 @@ public class Veterinary{
 		
 		return miniRooms;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setRoom (Room[] miniRooms){
 		
 		this.miniRooms = miniRooms;
@@ -67,6 +83,10 @@ public class Veterinary{
 		
 		return service;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setService (ArrayList<ClientHuman> service){
 		
 		this.service = service;
@@ -76,6 +96,10 @@ public class Veterinary{
 	public ArrayList<ClinicHistory> getHistory(){
 		return history;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setHistory (ArrayList<ClinicHistory> history){
 		this.history = history;
 	}
@@ -84,6 +108,10 @@ public class Veterinary{
 	public ArrayList<NewService> getOtherServices(){
 		return otherServices;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setOtherServices(ArrayList<NewService> otherServices){
 		this.otherServices = otherServices;
 	}
@@ -417,7 +445,16 @@ public class Veterinary{
 		return earningforservice5()/otherServices.size();
 	}
 	
-	//calcular ganancias con fecha inicial y fecha final
+	/**
+	**Description this method calculate the earnings whit date initial and final date
+	*@param dayI the day of month of the initial date
+	*@param monthI the month of year of the initial date
+	*@param yearI year of the initial date
+	*@param dayF the day of month of the final date
+	*@param monthF the month of the year of the final date
+	*@param yearF  year of the final date
+	*@return the earnings from that time lapse
+	*/
 	public double  calculateEarninWeek(int dayI, int monthI, int yearI, int dayF, int monthF, int yearF ){
 		Date nI = new Date(dayI, monthI, yearI);//borrar
 		Date nF = new Date(dayF, monthF, yearF);//borrar

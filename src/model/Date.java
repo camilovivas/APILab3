@@ -5,7 +5,9 @@
 *Date:
 */
 package model;
-
+/**
+*Description this class have information about the dates of the other class
+*/
 public class Date {
 	
 	//atributos
@@ -16,6 +18,9 @@ public class Date {
 	
 /**
 *Description This is the build of date
+*@param day the days of month
+*@param month the month of year
+*@param year the current year 
 */
 	public Date (int day, int month, int year){
 		this.day = day;
@@ -60,8 +65,7 @@ public class Date {
 	}
 /**
 *Description This method sets the year
-*@param  year
-*
+*@param  year the year 
 */	
 	public void setYear (int year){
 		this.year = year;

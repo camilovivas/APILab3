@@ -22,7 +22,9 @@ public class Main {
 		lector = new Scanner(System.in);
 		
 	}
-	
+	/**
+	*@param args array of arguments
+	*/
 	public static void main(String[] args){
 		
 		Main m = new Main();

@@ -6,7 +6,9 @@
 */
 package model;
 import java.util.ArrayList;
-
+/**
+*Description This class have information above the pets of the client
+*/
 
 public class Pet{
 	
@@ -25,6 +27,12 @@ public class Pet{
 	//constructor
 /**
 *Description This is the build of class Pet
+*@param name the name of pet
+*@param typeAnimal the type animal that belongs
+*@param age the age of pet
+*@param weight the weight of pet
+*@param height the height of pet
+*@param ownerP the owner of pet
 */	
 	public Pet (String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){
 		this.name = name;
@@ -39,6 +47,10 @@ public class Pet{
 	public String getName(){
 		return name;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setName (String name){
 		this.name = name;
 	}
@@ -47,6 +59,10 @@ public class Pet{
 	public int getTypeAnimal(){
 		return typeAnimal;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setTypeAnimal(int typeAnimal){
 		this.typeAnimal = typeAnimal;
 	}
@@ -55,6 +71,10 @@ public class Pet{
 	public int getAge(){
 		return age;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setAge(int age){
 		this.age = age;
 	}
@@ -63,6 +83,10 @@ public class Pet{
 	public double getWeight(){
 		return weight;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setWeight (double weight){
 		this.weight = weight;
 	}
@@ -71,6 +95,10 @@ public class Pet{
 	public double getHeight(){
 		return height;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setHeight (double height){
 		this.height = height;
 	}
@@ -79,6 +107,10 @@ public class Pet{
 	public ClientHuman getOwnerP(){
 		return ownerP;
 	}
+	/**
+	*Description
+	*@param
+	*/
 	public void setOwnerP (ClientHuman ownerP){
 		this.ownerP = ownerP;
 	}
@@ -86,11 +118,18 @@ public class Pet{
 	
 	//metodos
 	
-	//debe leer el to String de client
+	/**
+	*Description this method have the information of owner of the pet
+	*pre: owner must be no null
+	*@return dates of client
+	*/
 	public String dateOwner(){
 		return ownerP.showDateContac();
 	}
-	
+	/**
+	*Description this method detected the type animal
+	*@return String whit type animal(cat, dog, bird or another) 
+	*/
 	public String detecTypeAnimal(){
 		String msj;
 		
@@ -124,7 +163,12 @@ public class Pet{
 		return ownerP.showDateContac();
 	}
 	
-	//calcula el indice de masa corporal  (agregar altura)
+	/**
+	*Description This method allows to calculate the body mass index for a pet.
+	*pre: The pet was created before and its attributes height and weight are not null neither height must be zero.
+	*post: The BMI is calculated.
+	*@return The pet body mass index. Returns -1 if the height is zero  due to the division on zero does not exist.
+	*/
 	public double imc(){
 		return weight/Math.pow(height, 2);
 	}

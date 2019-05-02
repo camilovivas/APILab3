@@ -6,7 +6,9 @@
 */
 package model;
 import java.util.*;
-
+/**
+*Description This class have information above the new services of the veterinary
+*/
 public class NewService{
 	//constantes
 	public static final char BATH_VETERINARY = 'v';
@@ -26,6 +28,7 @@ public class NewService{
 	//constructor
 /**
 *Description This is the build of class NewService
+*@param typeService the new type services provided by the veterinary
 */
 	public NewService(char typeService){
 		this.typeService = typeService;
@@ -59,7 +62,10 @@ public class NewService{
 		return msj;
 		
 	}
-	
+	/**
+	*Description This method calculate the cost of each service
+	*@return the cost of service
+	*/
 	public double calculateCost(){
 		double cost = 0.0;
 		if(typeService == BATH_VETERINARY){
