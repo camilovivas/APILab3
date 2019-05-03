@@ -244,31 +244,39 @@ public class Veterinary{
 		history.get(i);
 	}
 	
-	//reporte del animal hospitalizado  con historia clinica
-	public String report(){
+	//reporte del animal hospitalizado con historia clinica
+	/**
+	*Description This method show the pet inside the room
+	*@return String whit information from pet hospitalized
+	*/
+	public String report(int j){
 		String msj = " ";
-		for(int i = 0; i<TOTAL_ROOM; i++){
-			if(miniRooms[i].getStatus() == false){
-				msj += miniRooms[i].report();
-			}
-				
-			else{
-					
-				msj = "en el cuarto "+i+" no hay mascotas hospitalizadas";
-			}
+		if(miniRooms[j].getStatus() == false){
+			msj += miniRooms[j].report();
 		}
+				
+		else{
+				
+			msj += "en el cuarto "+i+" no hay mascotas hospitalizadas";
+		}
+		
 		return msj;
 		
 	}
 	
 	
-	//busca el numero de cuarto
+	//busca el numero de cuarto(eliminar)
 	public void showNumRoom(int j){
 		miniRooms[j].Num();
 	}
 	
 	
 	//tiene los datos de contacto del dueño de cada mascota que hay hospitalizada
+	/**
+	*Description This method show the date contact of owner of the pet hospitalized
+	*@param num the number of room
+	*@return String whit dates contact of owner
+	*/
 	public String dateContac(int num){
 		
 		return miniRooms[num-1].dateContacOwner();
@@ -276,6 +284,11 @@ public class Veterinary{
 	
 	
 	//al dar de alta se óne el cuarto disponibre
+	/**
+	*Description This method changes the status from room when discharged from the hospital
+	*@param num the number of room
+	*post: has been changes the status from room
+	*/
 	public void setRoomFree(int num){
 		miniRooms[num-1].setStatus(true);
 		
@@ -283,12 +296,22 @@ public class Veterinary{
 	
 	
 	//cambiar el estado de la historia clinica
+	/**
+	*Description This method changes the status from clinic history when discharged from the hospital
+	*@param num the number of room
+	*@param status the new status 
+	*post: has been changes the status from clinic history
+	*/
 	public void setStatusHis(int num, boolean status){
 		
 		miniRooms[num-1].statusHist(status);
 	}
 	
 	//muestra los numbres de las mascotas hospiitalizadas con el numero de cuarto
+	/**
+	*Description this method show the pets that are hospitalized whit room number
+	*@return all pets hospitalized and room number
+	*/
 	public String showNameForAllPetsHospi(){
 		String msj;
 		
@@ -299,6 +322,10 @@ public class Veterinary{
 	}
 	
 	//muestra los numbres de las mascotas hospiitalizadas sin el numero de cuarto
+	/**
+	*Description this method show the pets that are hospitalized whitout room number
+	*@return all pets hospitalized 
+	*/
 	public String showNameForAllPetsHospisinNum(){
 		String msj;
 		
@@ -309,11 +336,15 @@ public class Veterinary{
 	}
 	
 	//muestra informacion para dar de alta las mascotas
+	/**
+	*Description this method show the pets hospitalized for the proces of discharged from the hospital
+	*@return the pets hospitalized
+	*/
 	public String showNameForDeleit(){
-		String msj;
+		String msj = "";
 		
 		for(int i = 0; i <TOTAL_ROOM; i++){
-			msj = "en el cuarto "+i+"esta la mascota:"+miniRooms[i].namePet()+"y los datos su dueño son:"+miniRooms[i].dateContacOwner();
+			msj += "\n"+"en el cuarto "+i+"esta la mascota:"+miniRooms[i].namePet()+"y los datos su dueño son:"+miniRooms[i].dateContacOwner();
 		}
 		return msj;
 	}
@@ -334,13 +365,23 @@ public class Veterinary{
 		return msj;
 	}
 	
-	
-	//agrega la fecha en la que se le dio de alta
+	/**
+	*Description This method add date when was discharge to clinic history
+	*@param numero the position of room where are the pet
+	*@param day the day of month when was discharged from the hospital
+	*@param month the month of year when was discharged from the hospital
+	*@param year the year when was discharged from the hospital
+	*post: has been add the date to clinic history
+	*/
 	public void addOut(int numero, int day, int month, int year){
 		miniRooms[numero-1].addOut(day, month, year);
 	}
 	
 	//ganancias por hospitalizacion
+	/**
+	*Description This method calculate the earnings from hospitalization
+	*@return earnigs from hospitalization
+	*/
 	public double erningsOfHosp(){
 		double cost =0.0;
 		for(int i = 0; i<history.size(); i++){
@@ -350,6 +391,10 @@ public class Veterinary{
 	}
 	
 	//ganancias por hospitalizacion y medicina de todas las historias
+	/**
+	*Description This method calculate the earning from hospitalization and medicines
+	*@return earnings from hospitalization and medicines
+	*/
 	public double earningsOfHosAndMed(){
 		double cost =0.0;
 		for(int k = 0; k<history.size(); k++){
@@ -358,7 +403,11 @@ public class Veterinary{
 		return cost;
 	}
 	
-	//estos 6 metodos calcula la ganancias por cada servicio y el total
+	
+	/**
+	*Description This method calculate earnings from service of bath veterynary
+	*@return the aerning from bath veterynary
+	*/
 	public double earningforservice1(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
@@ -371,6 +420,10 @@ public class Veterinary{
 		}
 		
 	}
+	/**
+	*Description This method calculate earnings from service of bath domicile
+	*@return the aerning from bath domicile
+	*/
 	public double earningforservice2(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
@@ -383,6 +436,10 @@ public class Veterinary{
 		}
 		
 	}
+	/**
+	*Description This method calculate earnings from service of nail cutting
+	*@return the aerning from nail cutting
+	*/
 	public double earningforservice3(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
@@ -395,6 +452,10 @@ public class Veterinary{
 		}
 		
 	}
+	/**
+	*Description This method calculate earnings from service of dental prophylaxis
+	*@return the aerning from dental prophylaxis
+	*/
 	public double earningforservice4(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
@@ -407,6 +468,10 @@ public class Veterinary{
 		}
 		
 	}
+	/**
+	*Description This method calculate earnings from service of vaccination
+	*@return the aerning from vaccination
+	*/
 	public double earningforservice5(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
@@ -419,6 +484,10 @@ public class Veterinary{
 		}
 		
 	}
+	/**
+	*Description This method calculate the earnings from all new services
+	*@return earnings from new services
+	*/
 	public double earningforallservices(){
 		return earningforservice1()+earningforservice2()+earningforservice3()+earningforservice4()+earningforservice5();
 	}
@@ -441,6 +510,9 @@ public class Veterinary{
 	public double average4(){
 		return earningforservice4()/otherServices.size();
 	}
+	/**
+	*Description This method calcula 
+	*/
 	public double average5(){
 		return earningforservice5()/otherServices.size();
 	}

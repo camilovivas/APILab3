@@ -8,7 +8,7 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.*;
-
+report
 
 public class Main {
 	
@@ -67,7 +67,10 @@ public class Main {
 				break;
 				
 				case 2:
-				System.out.println(relacion.report());
+				System.out.println(showNameForAllPetsHospi());
+				System.out.println("ingrese el numero del animal que desea verle la historia clinica...");
+				int j = lector.nextInt();
+				System.out.println(relacion.report(j));
 				
 				break;
 				
@@ -288,20 +291,10 @@ public class Main {
 		Date d1 = new Date(1,1,2019);
 		Date d2 = new Date(1,1,2019);
 		
-		ClinicHistory ch1= new ClinicHistory(true, "virosis", "vomito", d1, null, p1);
-		ClinicHistory ch2= new ClinicHistory(true, "virosis", "diarrea", d2, null, p2);
-		ch1.addcure(m1);
-		ch1.addcure(m2);
-		
 		Pet p1 = new Pet ("Michi", 1, 2, 4.5, 30.4, cl1);
 		Pet p2 = new Pet ("luci", 1, 3, 4.6, 34.0 cl1);
 		p1.setOwnerP(cl1);
 		p2.setOwnerP(cl1);
-	
-		ClientHuman cl1 = new ClientHuman( "Camilo", 1006015105, "cra 46C #52-15", "3024453593");
-		service.add(cl1);
-		cl1.addPet(p1);
-		cl1.addPet(p2);
 		
 		Medicine m1 = new Medicine( "acetominofem", 1.2, 4.000, 6);
 		
@@ -313,6 +306,20 @@ public class Main {
 		
 		
 		Medicine m4 = new Medicine( "suero", 1.2, 4.000, 6);
+		
+		ClinicHistory ch1= new ClinicHistory(true, "virosis", "vomito", d1, null, p1);
+		ClinicHistory ch2= new ClinicHistory(true, "virosis", "diarrea", d2, null, p2);
+		ch1.addcure(m1);
+		ch1.addcure(m2);
+		
+		
+	
+		ClientHuman cl1 = new ClientHuman( "Camilo", 1006015105, "cra 46C #52-15", "3024453593");
+		service.add(cl1);
+		cl1.addPet(p1);
+		cl1.addPet(p2);
+		
+		
 		
 		
 

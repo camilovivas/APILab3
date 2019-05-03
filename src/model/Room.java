@@ -73,6 +73,10 @@ public class Room {
 	
 	
 	//reporte de animal
+	/**
+	*Description This method show the pet in the room
+	*@return String whit number fromm room and information of the pet 
+	*/
 	public String report(){
 		String msj;
 		
