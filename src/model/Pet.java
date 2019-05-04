@@ -23,17 +23,17 @@ public class Pet{
 	
 	//relaciones
 	private ClientHuman ownerP;
-		
-	//constructor
-/**
-*Description This is the build of class Pet
-*@param name the name of pet
-*@param typeAnimal the type animal that belongs
-*@param age the age of pet
-*@param weight the weight of pet
-*@param height the height of pet
-*@param ownerP the owner of pet
-*/	
+	
+	
+	/**
+	*Description This is the build of class Pet
+	*@param name the name of pet
+	*@param typeAnimal the type animal that belongs
+	*@param age the age of pet
+	*@param weight the weight of pet
+	*@param height the height of pet
+	*@param ownerP the owner of pet
+	*/	
 	public Pet (String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){
 		this.name = name;
 		this.typeAnimal = typeAnimal;
@@ -44,12 +44,16 @@ public class Pet{
 	}
 	
 	//get y set
+	/**
+	*Description This method get the name
+	*@return the name 
+	*/
 	public String getName(){
 		return name;
 	}
 	/**
-	*Description
-	*@param
+	*Description This method set the name
+	*@param name the name
 	*/
 	public void setName (String name){
 		this.name = name;
@@ -145,7 +149,10 @@ public class Pet{
 		return msj;
 	}
 	
-	
+	/**
+	*Description This method show information of this class
+	*@return String whit information of this class
+	*/	
 	public String toString(){
 		String msj;
 		msj ="Nombre:"+name+"\n";
@@ -156,11 +163,6 @@ public class Pet{
 		msj += "IMC:"+imc()+"\n";
 		
 		return msj;
-	}
-	
-	//trae nomas los datos de contacto del dueño
-	public String dateContac(){
-		return ownerP.showDateContac();
 	}
 	
 	/**

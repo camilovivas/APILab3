@@ -41,12 +41,16 @@ public class Veterinary{
 	
 	
 	//get y set
+	/**
+	*Description This method get the name
+	*@return the name 
+	*/
 	public String getName(){
 		return name;
 	}
 	/**
-	*Description
-	*@param
+	*Description This method set the name
+	*@param name the name
 	*/
 	public void setName (String name){
 		this.name = name;
@@ -203,6 +207,13 @@ public class Veterinary{
 	}
 	
 	//actualiza los datos de un cliente
+	/**
+	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+	*pre: The client was created before.
+	*post: The address and /or phone number of the client is updated.
+	*@param The new address of the client. This param could be empty.
+	*@param The new phone number of the client. This param could be empty.
+	*/
 	public void update (String id, String phone, String address){
 		boolean continuar = true;
 			
@@ -493,11 +504,15 @@ public class Veterinary{
 	}
 	
 	//ganancias d ela veterinaria
+	/**
+	*Description This method calculate the earning from all services of the veterinary
+	*@return the earnigs of new services, hozpitalition and medicines
+	*/
 	public double earningsofVeterynary(){
 		return earningforallservices()+earningsOfHosAndMed();
 	}
 	
-	//los siguientes metodos 5 calcularan el promedio de ganancias
+	//los siguientes metodos 5 calcularan el promedio de ganancias(corregir)
 	public double average1(){
 		return earningforservice1()/otherServices.size();
 	}
@@ -548,6 +563,34 @@ public class Veterinary{
 		return earning;
 		
 	}
+	
+	/**
+	*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: New medicines were added to the patient clinic story.
+	*@param The medicine name. This param must be not null.
+	*@param The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned.
+	*@param The medicine cost by each dose. This param could be empty.
+	*@param The frequency of medicine application. This param could be empty.
+	*@return A message that indiques if medicine was added to the patient clinic story
+	*/
+	public void addNewMedicines()
+	
+	/**
+	*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: A new symptom were added to the patient clinic story.
+	*@param The new symptom presented. This param must be not null.
+	*/
+	public void addNewSymptom()
+	
+	/**
+	*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: New notes were added to the possible diagnostic in the patient clinic story.
+	*@param The notes of possible diagnostic. This param must be not null.
+	*/
+	public void addNewDiagnostic()
 	
 	
 }

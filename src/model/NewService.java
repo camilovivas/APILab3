@@ -25,11 +25,11 @@ public class NewService{
 	
 	//relacion
 	private Date register;
-	//constructor
-/**
-*Description This is the build of class NewService
-*@param typeService the new type services provided by the veterinary
-*/
+	
+	/**
+	*Description This is the build of class NewService
+	*@param typeService the new type services provided by the veterinary
+	*/
 	public NewService(char typeService){
 		this.typeService = typeService;
 		this.cost = calculateCost();
@@ -51,7 +51,10 @@ public class NewService{
 	
 	//metodos
 	
-	
+	/**
+	*Description This method show information of this class
+	*@return String whit information of this class
+	*/	
 	public String toString(){
 		String msj;
 		msj = "el tipo de servicio:"+typeService;

@@ -164,10 +164,10 @@ public class ClinicHistory{
 		return msj;
 	}
 	
-/**
-*
-*
-*/	
+	/**
+	*Description This method show information of this class
+	*@return String whit information of this class
+	*/	
 	public String toString(){
 		
 		String msj;
@@ -325,7 +325,7 @@ public class ClinicHistory{
 */	
 	//trae los datos de contacto del dueño de la mascota
 	public String dateOwnerPet(){
-		return chp.dateContac();
+		return chp.dateOwner();
 	}
 /**
 *

@@ -20,13 +20,13 @@ public class ClientHuman {
 	//relaciones
 
 	
-/**
-*Description This is the build of date
-*@param name the name of client
-*@param id the idetification of client 
-*@param sddress the address of the client´s house
-*@param phone number of phone of client 
-*/
+	/**
+	*Description This is the build of date
+	*@param name the name of client
+	*@param id the idetification of client 
+	*@param sddress the address of the client´s house
+	*@param phone number of phone of client 
+	*/
 	public ClientHuman (String name, String id, String address, String phone){
 	
 		this.name = name;
@@ -40,86 +40,87 @@ public class ClientHuman {
 *
 */	
 	//get y set
+	/**
+	*Description This method get the name
+	*@return the name 
+	*/
 	public String getName(){
 		return name;
 	}
-/**
-*
-*@param
-*/
+	
+	/**
+	*Description This method set the name
+	*@param name the name
+	*/
 	public void setName (String name){
 		this.name = name;
 	}
-/**
-*
-*
-*/	
-	
+	/**
+	*Description This method get the identification
+	*@return the identification
+	*/	
 	public String getId(){
 		return id;
 	}
-/**
-*
-*@param
-*/	
+	/**
+	*Description this method set the identification
+	*@param id the identification
+	*/	
 	public void setId (String id){
 		this.id = id;
 	}
-/**
-*
-*
-*/	
-	
+	/**
+	*Description This method get the address
+	*@return the address 
+	*/	
 	public String getAddress(){
 		return address;
 	}
-/**
-*
-*@param
-*/	
+	/**
+	*Description this method set the address
+	*@param address the address from house
+	*/	
 	public void setAddress (String address){
 		this. address = address;
 	}
-/**
-*
-*
-*/	
-	
+	/**
+	*Description This method  get the phone
+	*@return the phone 
+	*/	
 	public String getPhone(){
 		return phone;
 	}
-/**
-*
-*@param
-*/	
+	/**
+	*Description This method set the phone
+	*@param phone the phone of client
+	*/	
 	public void setPhone(String phone){
 		this.phone = phone;
 	}
-/**
-*
-*
-*/	
-	
-	public ArrayList<Pet> getownerC(){
+	/**
+	*Description This method get the pets
+	*@return the pets of client
+	*/	
+	public ArrayList<Pet> getOwnerC(){
 		
 		return ownerC;
 	}
-/**
-*
-*@param
-*/	
+	/**
+	*Description This method set the pets
+	*@param ownerC the pet of client
+	*/	
 	public void setOwnerC (ArrayList<Pet> ownerC){
 		
 		this.ownerC = ownerC;
 	}
 	
 	//metodos
-/**
-*Description This method show the dates of contact of the client
-*pre: the address and phone must be no null
-*@return a String that show the dates if contact
-*/
-	//muestra los datos de contacto
+	
+	/**
+	*Description This method show the dates of contact of the client
+	*pre: the address and phone must be no null
+	*@return a String that show the dates if contact
+	*/
 	public String showDateContac(){
 		String msj = "los datos de contacto del cliente"+name+"son:\n";
 		msj += "-"+address;
@@ -127,11 +128,12 @@ public class ClientHuman {
 	
 		return msj;
 	}
-/**
-*Description This method show the pets of the client
-*pre: the pet must be no null
-*@return a String that show the names of the pets
-*/	
+	
+	/**
+	*Description This method show the pets of the client
+	*pre: the pet must be no null
+	*@return a String that show the names of the pets
+	*/	
 	public String showPetsHos(){
 		String msj = " ";
 		for(int j = 0 ; j<ownerC.size(); j++){
@@ -141,35 +143,35 @@ public class ClientHuman {
 		
 		return msj;
 	}
-/**
-*Description this method add the pets to the arrayList of your owner
-*@param name the name of pet
-*@param typeAnimal the type animal that belongs
-*@param age the age of pet
-*@param weight the weight of pet
-*@param height the height of pet
-*@param ownerP the owner of pet
-*post: the pet has been added
-*/	
-	//agrega las mascotas
+	
+	/**
+	*Description this method add the pets to the arrayList of your owner
+	*@param name the name of pet
+	*@param typeAnimal the type animal that belongs
+	*@param age the age of pet
+	*@param weight the weight of pet
+	*@param height the height of pet
+	*@param ownerP the owner of pet
+	*post: the pet has been added
+	*/	
 	public void addPet(String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){
 		
 		Pet nuevo = new Pet(name, typeAnimal, age, weight, height, ownerP);
 		ownerC.add(nuevo);
 		
 	}
-/**
-*
-*
-*/	
+	/**
+	*Description This method add a pet to ArrayList
+	*post: has been add the pet
+	*/	
 	public void addPets(Pet p1){
 		ownerC.add(p1);
 	}
-/**
-*
-*
-*/	
-	//muestra todo el cliente
+	
+	/**
+	*Description This method show information of this class
+	*@return String whit information of this class
+	*/	
 	public String toString(){
 		String msj;
 		msj = "Nombre:"+"\n"+getName();
