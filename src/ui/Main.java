@@ -38,25 +38,24 @@ public class Main {
 		
 		while(opcionElegida != 8){
 			System.out.println("Por favor dijite la opcion que quiere realizar:");
-			System.out.println("1.Registrar cliente y mascota");//hozpitalizar, si es nuevo se registra y si no se busca en el array de clientes con su numero de id y se crea una nueva historia clinica con el que ya existe 
+			System.out.println("1.Registrar cliente y mascota");
 			System.out.println("2.Ver historias clinicas de los animales hospitalizados");
-			System.out.println("3.Consultar datos del dueño de una mascota"); //ingrese nombre de animal o nombre del dueño
+			System.out.println("3.Consultar datos del dueño de una mascota"); 
 			System.out.println("4.Ver los informes del historial de historias clinicas");
 			System.out.println("5.Dar de alta a una mascota");
-			System.out.println("6.Ver ingresos por conceptos de hospitalizacion");// recorrer las historias e ir sumando el costo
+			System.out.println("6.Ver ingresos por conceptos de hospitalizacion");
 			System.out.println("7.Ver el numero de mini cuarto de una mascota hospitalizada");
-			
-			System.out.println("9.actualizar datos de un cliente registrado");//ingrese el id del cliente a actualizar
-			System.out.println("10.agregar nuevos medicamento a una historia clinica existente");//recorrer el historiaL yy modificar las medicinas
-			System.out.println("11.agregar nuevas notas al diagnostico de una mascota hospitalizada");//me voy a los miniroom y modifico
-			System.out.println("12.agregar un nuevo sintoma a una mascota hospitalizada");
-			System.out.println("13.Calcular los ingresos por servicios");
-			System.out.println("14.Calcular los ingresos totales de la veterinaria");
-			System.out.println("15.Agregar al sistema nuevos servicios prestados por la veterinaria, es decir los servicios vendidos no nuevos tipos de servicios");//que registre un servicio existente
-			System.out.println("16.Promedio de ingresos por servicio");
-			System.out.println("17.Promedio de ingresos de la veterinaria en una semana");
-			System.out.println("18.Reporte de servicios prestados dada una fecha inicial y una fecha final");
-			System.out.println("19.Salir");
+			System.out.println("8.actualizar datos de un cliente registrado");
+			System.out.println("9.agregar nuevos medicamento a una historia clinica existente");
+			System.out.println("10.agregar nuevas notas al diagnostico de una mascota hospitalizada");
+			System.out.println("11.agregar un nuevo sintoma a una mascota hospitalizada");
+			System.out.println("12.Calcular los ingresos por servicios");
+			System.out.println("13.Calcular los ingresos totales de la veterinaria");
+			System.out.println("14.Agregar al sistema nuevos servicios prestados por la veterinaria, es decir los servicios vendidos no nuevos tipos de servicios");
+			System.out.println("15.Promedio de ingresos por servicio");
+			System.out.println("16.Promedio de ingresos de la veterinaria en una semana");
+			System.out.println("17.Reporte de servicios prestados dada una fecha inicial y una fecha final");
+			System.out.println("18.Salir");
 			
 			opcionElegida = lector.nextInt();
 			lector.nextLine();
@@ -67,15 +66,13 @@ public class Main {
 				break;
 				
 				case 2:
-				System.out.println(showNameForAllPetsHospi());
+				System.out.println(relacion.showNameForAllPetsHospi());
 				System.out.println("ingrese el numero del animal que desea verle la historia clinica...");
 				int j = lector.nextInt();
 				System.out.println(relacion.report(j));
-				
 				break;
 				
 				case 3:
-				
 				System.out.println(relacion.showNameForAllPetsHospi());
 				System.out.println("ingrese el numero del cuarto en que se encuentra la mascota, para mostrar los datos de contacto de su dueño");
 				int num =  lector.nextInt();
@@ -87,7 +84,7 @@ public class Main {
 				break;
 				
 				case 5:
-				
+				caso5();
 				break;
 				
 				case 6:
@@ -95,18 +92,14 @@ public class Main {
 				break;
 				
 				case 7:
-				System.out.println("las mascotas hospitalizadas son:");// los nombres de las mascotas hospitalizadas
+				System.out.println("las mascotas hospitalizadas son:");
 				System.out.println(relacion.showNameForAllPetsHospisinNum());
 				System.out.println("ingrese el nombre de la mascota abuscar...");
 				String nameFind = lector.nextLine();
 				relacion.showPetsHosp(nameFind);
-			
 				break;
 				
-				case 8
-				break;
-				
-				case 9
+				case 8:
 				System.out.println("ingrese el id del cliente");
 				String id = lector.nextLine();
 				System.out.println("ingrese el nuevo numero telefonico");
@@ -116,8 +109,7 @@ public class Main {
 				relacion.update(id, phone, address);
 				break;
 				
-				
-				case 10
+				case 9:
 				System.out.println("estas son las mascotas hospitalizadas, ingrese el numero de la cual quiere agregar un medicamento");
 				System.out.println(relacion.showNameForAllPetsHospi());
 				int option = lector.nextInt();
@@ -127,28 +119,30 @@ public class Main {
 				double dose = lector.nextDouble();
 				System.out.println("ingrese el costo por dosis");
 				double costDose = lector.nextDouble();
-				nextDouble();ingrese la frequencia");
+				System.out.println("ingrese la frequencia");
 				int frequency = lector.nextInt();
-				
+				relacion.addNewMedicines(option, name, dose, costDose, frequency);
 				break;
 				
-				case 11
+				case 10:
 				System.out.println("estas son las mascotas hospitalizadas, ingrese el numero de la cual quiere agregar un diagnostico");
 				System.out.println(relacion.showNameForAllPetsHospi());
-				int option = lector.nextInt();
+				int nume = lector.nextInt();
 				System.out.println("ingrese el diagnostico");
 				String diagnostic = lector.nextLine();
+				relacion.addNewDiagnostic(diagnostic, nume);
 				break;
 				
-				case 12
+				case 11:
 				System.out.println("estas son las mascotas hospitalizadas, ingrese el numero de la cual quiere agregar un sintoma");
 				System.out.println(relacion.showNameForAllPetsHospi());
-				int option = lector.nextInt();
+				int num1 = lector.nextInt();
 				System.out.println("ingrese el sintoma");
-				String symptom = lector.nextLine();
+				String symptomNew = lector.nextLine();
+				relacion.addNewSymptom(symptomNew,num1);
 				break;
 				
-				case 13
+				case 12:
 				System.out.println("los ingresos por servicio de baño son:");
 				relacion.earningforservice1();
 				System.out.println("los ingresos por servicio de baño a domicilio son:");
@@ -161,18 +155,30 @@ public class Main {
 				relacion.earningforservice5();
 				System.out.println("los ingresos por todos los servicios son:");
 				relacion.earningforallservices();
-				
 				break;
 				
-				case 14
+				case 13:
 				System.out.println("los ingresos de la veterinarya son:");
 				System.out.println(relacion.earningsofVeterynary());
 				break;
 				
-				case 15
+				case 14:
+				System.out.println("ingrese identificacion del cliente");
+				String id1 = lector.nextLine();
+				System.out.println("ingrese el tipo de servico");
+				char typeService = lector.next().charAt(0);
+				System.out.println("ingrese el dia en que se realizo el servicio");
+				int day =lector.nextInt();
+				System.out.println("ingrese el mes");
+				int month = lector.nextInt();
+				System.out.println("ingrese el año");
+				int year = lector.nextInt();
+				System.out.println("ingrese el nombre de la mascota");
+				String name1 = lector.nextLine();
+				relacion.addService(typeService, day, month, year, id1, name1);
 				break;
 				
-				case 16
+				case 15:
 				System.out.println("el promedio de ingresos por servicio de baño son:");
 				System.out.println(relacion.average1());
 				System.out.println("el promedio de ingresos por servicio de baño a domicilio son:");
@@ -185,18 +191,18 @@ public class Main {
 				System.out.println(relacion.average5());
 				break;
 				
-				case 17
+				case 16:
 				System.out.println("ATENCION: EL PPROGRAMA CALCULA EL PROMEDIO DE LOS SIGUIENTES 7 DIAS A LA FECHA INGRESADA");
 				System.out.println("ingrese el dia");
-				int day =lector.nextInt();
+				int day1 =lector.nextInt();
 				System.out.println("ingrese el mes");
-				int month = lector.nextInt();
+				int month1 = lector.nextInt();
 				System.out.println("ingrese el año");
- 				int year = lector.nextInt();
-				System.out.println("el promedio de ingresos en esta semana fue:"+calculateEarningsofWeek(day, month, year));
+ 				int year1 = lector.nextInt();
+				System.out.println("el promedio de ingresos en esta semana fue:"+relacion.calculateEarningsofWeek(day1, month1, year1));
 				break;
 				
-				case 18
+				case 17:
 				System.out.println("ingrese la fecha inicial");
 				System.out.println("ingrese el dia");
 				int dayI =lector.nextInt();
@@ -212,8 +218,8 @@ public class Main {
 				int monthF = lector.nextInt();
 				System.out.println("ingrese el año");
  				int yearF = lector.nextInt();
-				 System.out.println(reporInLapse(dayI, monthI, yearI, dayF, monthF, yearF));
-				 System.out.println(reporInLapse2(dayI, monthI, yearI, dayF, monthF, yearF));
+				System.out.println(relacion.reporInLapse(dayI, monthI, yearI, dayF, monthF, yearF));
+				System.out.println(relacion.reporInLapse2(dayI, monthI, yearI, dayF, monthF, yearF));
 				break;
 				
 				case 19:
@@ -226,17 +232,16 @@ public class Main {
 				System.out.println("___________________________________________________");
 				System.out.println("        !!la opcion ingresada no es valida!!       ");
 				System.out.println("___________________________________________________\n\n");
+				break;
 			}
-		}
-		
+		}	
 	}
 	public void caso5(){
-		System.out.println("las mascotas hospitalizadas son:");// estas son las que hay, seleccione la que quiere ver
+		System.out.println("las mascotas hospitalizadas son:");
 		System.out.println(relacion.showNameForDeleit());
 		
 		System.out.println("ingrese el numero del cuarto de la mascota que quiere dar de alta");
 		int num = lector.nextInt();
-			
 		System.out.println("ingrese el dia de salida");
 		int day = lector.nextInt();
 		System.out.println("ingrese el mes de salida");
@@ -270,10 +275,11 @@ public class Main {
 			relacion.addClient(name, id, address, phone);
 			
 			//regisgtro mascota que se repita si tiene mas mascotas
+			int repetidor = 0;
 			while(repetidor == 2){
 			
 				System.out.println("ingrese nombre mascota");
-				String name =  lector.nextLine();
+				String name1 =  lector.nextLine();
 				
 				System.out.println("ingrese el tipo de animal:"+"\n"+"cat =1"+"\n"+"dog = 2"+"\n"+"bird = 3"+"\n"+"otro = 4");
 				int typeAnimal =  lector.nextInt();
@@ -287,10 +293,10 @@ public class Main {
 				System.out.println("ingrese la altura del animal");
 				double height = lector.nextDouble();
 				
-				relacion.addPet(id, name, typeAnimal, age, weight, height);
+				relacion.addPet(id, name1, typeAnimal, age, weight, height);
 				
 				System.out.println("¿tiene mas mascotas?"+"\n"+"1. Si"+"\n"+"2. No");
-				int repetidor = nextInt();
+				repetidor = lector.nextInt();
 			}
 		}
 		else{
@@ -302,37 +308,36 @@ public class Main {
 		Date d1 = new Date(1,1,2019);
 		Date d2 = new Date(1,1,2019);
 		
-		Pet p1 = new Pet ("Michi", 1, 2, 4.5, 30.4, cl1);
-		Pet p2 = new Pet ("luci", 1, 3, 4.6, 34.0 cl1);
-		p1.setOwnerP(cl1);
-		p2.setOwnerP(cl1);
+		Date ds1 = new Date(2,3,2019);
+		Date ds2 = new Date(3,4,2019);
+		Date ds3 = new Date(5,2,2019);
 		
 		Medicine m1 = new Medicine( "acetominofem", 1.2, 4.000, 6);
-		
-		
 		Medicine m2 = new Medicine( "suero", 1.2, 4.000, 6);
-		
-		
 		Medicine m3 = new Medicine( "dolex", 1.2, 4.000, 6);
-		
-		
 		Medicine m4 = new Medicine( "suero", 1.2, 4.000, 6);
+		
+		ClientHuman cl1 = new ClientHuman( "Camilo", "1006015105", "cra 46C #52-15", "3024453593");
+		Pet p1 = new Pet ("Michi", 1, 2, 4.5, 30.4, cl1);
+		Pet p2 = new Pet ("luci", 1, 3, 4.6, 34.0, cl1);
+		p1.setOwnerP(cl1);
+		p2.setOwnerP(cl1);
+		cl1.addPets(p1);
+		cl1.addPets(p2);
 		
 		ClinicHistory ch1= new ClinicHistory(true, "virosis", "vomito", d1, null, p1);
 		ClinicHistory ch2= new ClinicHistory(true, "virosis", "diarrea", d2, null, p2);
 		ch1.addcure(m1);
 		ch1.addcure(m2);
+		ch2.addcure(m3);
+		ch2.addcure(m4);
 		
-		
-	
-		ClientHuman cl1 = new ClientHuman( "Camilo", 1006015105, "cra 46C #52-15", "3024453593");
-		service.add(cl1);
-		cl1.addPet(p1);
-		cl1.addPet(p2);
-		
-		
-		
-		
+		NewService s1= new NewService('d', ds1, p1);
+		NewService s2= new NewService('v', ds2, p2);
+		NewService s3= new NewService('c', ds3, p2);
+		relacion.addSer(s1);
+		relacion.addSer(s2);
+		relacion.addSer(s3);
 
 		Room miniRoom1 = new Room(true, 1, null);
 		Room miniRoom2 = new Room(true, 2, null);
@@ -344,7 +349,7 @@ public class Main {
 		Room miniRoom8 = new Room(true, 8, null);
 		Room[] allRooms = {miniRoom1, miniRoom2, miniRoom3, miniRoom4, miniRoom5, miniRoom6, miniRoom7, miniRoom8};
 		relacion.setRoom(allRooms);
-		relacion.addClient(cl1);
+		relacion.addclients(cl1);
 		relacion = new Veterinary("mi pequeña mascota", "Cali");
 		
 	}

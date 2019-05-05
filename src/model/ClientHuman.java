@@ -34,6 +34,7 @@ public class ClientHuman {
 		this.address  = address;
 		this.phone = phone;
 		ownerC = new ArrayList<Pet>();
+		
 	}
 /**
 *
@@ -181,6 +182,21 @@ public class ClientHuman {
 		
 		return msj;
 		
+	}
+	public Pet findPet(String name){
+		boolean continuar = true;
+		Pet aBuscar = null;
+	
+		for(int i = 0 ; i<ownerC.size() && !continuar; i++){
+			if (ownerC.get(i).getName() == name){
+				aBuscar= ownerC.get(i);
+				continuar = false;
+			
+			}
+		
+		}		
+	
+		return aBuscar;
 	}
 
 }

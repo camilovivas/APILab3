@@ -123,7 +123,10 @@ public class Veterinary{
 	
 	//metodos
 	
-	// mira si el cuarto esta disponible
+	/**
+	*Description This method look if there are room free
+	*@return false or true
+	*/
 	public boolean roomFree(){
 		boolean free = false;
 		for(int i = 0; i<miniRooms.length && !free; i++){
@@ -134,7 +137,7 @@ public class Veterinary{
 		return free;
 	}
 	
-	//mira la cantidad de cuartos disponibles
+	//mira la cantidad de cuartos disponibles(eliminar)
 	public int roomsTrue(){
 		int contador = 0;
 		for(int i = 0; i<TOTAL_ROOM; i++){
@@ -145,14 +148,29 @@ public class Veterinary{
 		return contador;
 	}
 	
-	
-	//cagregar historia clinica
+	/**
+	*Description This method add a clinic history at record
+	*@param ch1 the clinic history to add
+	*post: has been add the clinic history
+	*/
 	public void addHC(ClinicHistory ch1){
 		history.add(ch1);
 	}
-	
-	
-	//agregar cliente
+	/**
+	*Description This method add a client
+	*post: has been add a client
+	*/
+	public void addclients(ClientHuman c){
+		service.add(c);
+	}
+	/**
+	*Description this method add clients
+	*@param name the name of client
+	*@param id the idetification of client 
+	*@param sddress the address of the client´s house
+	*@param phone number of phone of client 
+	*@return String whit information above the proces
+	*/
 	public String addClient (String name, String id, String address, String phone){
 		String msj;
 		ClientHuman c1 = findCliente(id);
@@ -162,17 +180,28 @@ public class Veterinary{
 		else{
 			msj =("registro exitoso");
 			ClientHuman newClient = new ClientHuman(name, id, address, phone);
-			service.add(newClient);
+			addclients(newClient);
 			
 		}
 		
 		return msj;
 	}
 	
-	public void addPet(String id, String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){
+	/**
+	*Description This method add pets to client registered
+	*@param id the idetification of owner
+	*@param name the name of pet
+	*@param typeAnimal the type animal that belongs
+	*@param age the age of pet
+	*@param weight the weight of pet
+	*@param height the height of pet
+	*@param ownerP the owner of pet
+	*post: has been add other pet
+	*/
+	public void addPet(String id, String name, int typeAnimal, int age, double weight, double height){
 		ClientHuman temp = findCliente(id);
 		if (temp != null){
-			Pet p1 = new Pet(name, typeAnimal, age, weight, height, ownerP);
+			Pet p1 = new Pet(name, typeAnimal, age, weight, height, temp);
 			temp.addPets(p1);
 		}
 		
@@ -188,8 +217,10 @@ public class Veterinary{
 		}
 	}
 	
-	
-	//buscar cliente
+	/**
+	*Description This method find a client
+	*@return the client find
+	*/
 	public ClientHuman findCliente (String id){
 		boolean continuar = true;
 		ClientHuman aBuscar = null;
@@ -206,7 +237,6 @@ public class Veterinary{
 		return aBuscar;
 	}
 	
-	//actualiza los datos de un cliente
 	/**
 	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
 	*pre: The client was created before.
@@ -228,8 +258,10 @@ public class Veterinary{
 	
 	}
 	
-	
-	//ver el numero del cuarto en que se encuentra la mascota
+	/**
+	*Description This method show the room number
+	*@return the room number 
+	*/
 	public String showPetsHosp(String name){
 		boolean esta = false;
 		String msj= " ";
@@ -250,7 +282,6 @@ public class Veterinary{
 		return msj;
 	}
 	
-	//reporte del animal hospitalizado con historia clinica
 	/**
 	*Description This method show the pet inside the room
 	*@return String whit information from pet hospitalized
@@ -263,7 +294,7 @@ public class Veterinary{
 				
 		else{
 				
-			msj += "en el cuarto "+i+" no hay mascotas hospitalizadas";
+			msj += "en el cuarto "+j+" no hay mascotas hospitalizadas";
 		}
 		
 		return msj;
@@ -276,8 +307,6 @@ public class Veterinary{
 		miniRooms[j].Num();
 	}
 	
-	
-	//tiene los datos de contacto del dueño de cada mascota que hay hospitalizada
 	/**
 	*Description This method show the date contact of owner of the pet hospitalized
 	*@param num the number of room
@@ -288,8 +317,6 @@ public class Veterinary{
 		return miniRooms[num-1].dateContacOwner();
 	}
 	
-	
-	//al dar de alta se óne el cuarto disponibre
 	/**
 	*Description This method changes the status from room when discharged from the hospital
 	*@param num the number of room
@@ -300,8 +327,6 @@ public class Veterinary{
 		
 	}
 	
-	
-	//cambiar el estado de la historia clinica
 	/**
 	*Description This method changes the status from clinic history when discharged from the hospital
 	*@param num the number of room
@@ -313,13 +338,12 @@ public class Veterinary{
 		miniRooms[num-1].statusHist(status);
 	}
 	
-	//muestra los numbres de las mascotas hospiitalizadas con el numero de cuarto
 	/**
 	*Description this method show the pets that are hospitalized whit room number
 	*@return all pets hospitalized and room number
 	*/
 	public String showNameForAllPetsHospi(){
-		String msj;
+		String msj = "";
 		
 		for(int i = 0; i <TOTAL_ROOM; i++){
 			msj += "\n"+"en el cuarto "+i+"esta la mascota:"+miniRooms[i].namePet();
@@ -327,13 +351,12 @@ public class Veterinary{
 		return msj;
 	}
 	
-	//muestra los numbres de las mascotas hospiitalizadas sin el numero de cuarto
 	/**
 	*Description this method show the pets that are hospitalized whitout room number
 	*@return all pets hospitalized 
 	*/
 	public String showNameForAllPetsHospisinNum(){
-		String msj;
+		String msj = "";
 		
 		for(int i = 0; i <TOTAL_ROOM; i++){
 			msj += "\n"+miniRooms[i].namePet();
@@ -341,7 +364,6 @@ public class Veterinary{
 		return msj;
 	}
 	
-	//muestra informacion para dar de alta las mascotas
 	/**
 	*Description this method show the pets hospitalized for the proces of discharged from the hospital
 	*@return the pets hospitalized
@@ -355,9 +377,12 @@ public class Veterinary{
 		return msj;
 	}
 	
-	//mira el historial de historias (fue eliminado)
+	/**
+	*Description This method show all clinic historys from history
+	*@return all clinic history
+	*/
 	public String reporsHistory(){
-		String msj;
+		String msj="";
 		if (history.isEmpty()){
 			msj = "no hay historias guardadas";
 			
@@ -383,7 +408,6 @@ public class Veterinary{
 		miniRooms[numero-1].addOut(day, month, year);
 	}
 	
-	//ganancias por hospitalizacion
 	/**
 	*Description This method calculate the earnings from hospitalization
 	*@return earnigs from hospitalization
@@ -417,15 +441,13 @@ public class Veterinary{
 	public double earningforservice1(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
-			if(otherServices.get(i).getTypeService() == NewService.BATH_VETERINARY);{
+			if(otherServices.get(i).getTypeService() == NewService.BATH_VETERINARY){
 				cost += otherServices.get(i).getCost();
-				
 			}
-			return cost;
-			
 		}
-		
+		return cost;
 	}
+	
 	/**
 	*Description This method calculate earnings from service of bath domicile
 	*@return the aerning from bath domicile
@@ -433,14 +455,11 @@ public class Veterinary{
 	public double earningforservice2(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
-			if(otherServices.get(i).getTypeService() == NewService.BATH_DOMICILE);{
-				cost += otherServices.get(i).getCost();
-				
-			}
-			return cost;
-			
+			if(otherServices.get(i).getTypeService() == NewService.BATH_DOMICILE){
+				cost += otherServices.get(i).getCost();	
+			}	
 		}
-		
+		return cost;
 	}
 	/**
 	*Description This method calculate earnings from service of nail cutting
@@ -449,14 +468,11 @@ public class Veterinary{
 	public double earningforservice3(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
-			if(otherServices.get(i).getTypeService() == NewService.NAIL_CUTTING);{
-				cost += otherServices.get(i).getCost();
-				
-			}
-			return cost;
-			
+			if(otherServices.get(i).getTypeService() == NewService.NAIL_CUTTING){
+				cost += otherServices.get(i).getCost();	
+			}	
 		}
-		
+		return cost;
 	}
 	/**
 	*Description This method calculate earnings from service of dental prophylaxis
@@ -465,14 +481,11 @@ public class Veterinary{
 	public double earningforservice4(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
-			if(otherServices.get(i).getTypeService() == NewService.DENTAL_PROPHYLAXIS);{
+			if(otherServices.get(i).getTypeService() == NewService.DENTAL_PROPHYLAXIS){
 				cost += otherServices.get(i).getCost();
-				
-			}
-			return cost;
-			
+			}	
 		}
-		
+		return cost;
 	}
 	/**
 	*Description This method calculate earnings from service of vaccination
@@ -481,14 +494,11 @@ public class Veterinary{
 	public double earningforservice5(){
 		double cost =0.0;
 		for(int i = 0 ; i<otherServices.size(); i++){
-			if(otherServices.get(i).getTypeService() == NewService.VACCINATION);{
-				cost += otherServices.get(i).getCost();
-				
-			}
-			return cost;
-			
+			if(otherServices.get(i).getTypeService() == NewService.VACCINATION){
+				cost += otherServices.get(i).getCost();	
+			}	
 		}
-		
+		return cost;
 	}
 	/**
 	*Description This method calculate the earnings from all new services
@@ -498,7 +508,6 @@ public class Veterinary{
 		return earningforservice1()+earningforservice2()+earningforservice3()+earningforservice4()+earningforservice5();
 	}
 	
-	//ganancias d ela veterinaria
 	/**
 	*Description This method calculate the earning from all services of the veterinary
 	*@return the earnigs of new services, hozpitalition and medicines
@@ -513,7 +522,7 @@ public class Veterinary{
 	*@return the average of earnigs from bath veterinary
 	*/
 	public double average1(){
-		int contador = 0
+		int contador = 0;
 		for(int i =0; i<otherServices.size(); i++){
 			if(otherServices.get(i).getTypeService() == NewService.BATH_VETERINARY){
 				contador++;
@@ -526,7 +535,7 @@ public class Veterinary{
 	*@return the average of earnigs from bath domicile
 	*/
 	public double average2(){
-		int contador = 0
+		int contador = 0;
 		for(int i =0; i<otherServices.size(); i++){
 			if(otherServices.get(i).getTypeService() == NewService.BATH_DOMICILE){
 				contador++;
@@ -539,7 +548,7 @@ public class Veterinary{
 	*@return the average of earnigs from nail cutting
 	*/
 	public double average3(){
-		int contador = 0
+		int contador = 0;
 		for(int i =0; i<otherServices.size(); i++){
 			if(otherServices.get(i).getTypeService() == NewService.NAIL_CUTTING){
 				contador++;
@@ -552,7 +561,7 @@ public class Veterinary{
 	*@return the average of earnigs from dental prophylaxis
 	*/
 	public double average4(){
-		int contador = 0
+		int contador = 0;
 		for(int i =0; i<otherServices.size(); i++){
 			if(otherServices.get(i).getTypeService() == NewService.DENTAL_PROPHYLAXIS){
 				contador++;
@@ -565,7 +574,7 @@ public class Veterinary{
 	*@return the average of earnigs from vaccination
 	*/
 	public double average5(){
-		int contador = 0
+		int contador = 0;
 		for(int i =0; i<otherServices.size(); i++){
 			if(otherServices.get(i).getTypeService() == NewService.VACCINATION){
 				contador++;
@@ -599,10 +608,8 @@ public class Veterinary{
 			if(daysl> daysI && daysl <daysE){
 				reporthos += history.get(i);
 			}
-			
 		}
 		return reporthos;
-		
 	}
 	/**
 	**Description this method do a report of the new services whit date initial and final date
@@ -679,7 +686,7 @@ public class Veterinary{
 	*@return A String
 	*/
 	public String addNewMedicines(int num, String name, double dose, double costDose, int frequency){
-		String msj = miniRooms[num].addNewMedicines(String name, double dose, double costDose, int frequency);
+		String msj = miniRooms[num].addNewMedicines(name, dose, costDose, frequency);
 		return msj;
 	}
 	
@@ -688,6 +695,7 @@ public class Veterinary{
 	*pre: The patient clinic story must be not null.
 	*post: A new symptom were added to the patient clinic story.
 	*@param symptomNew This param must be not null.
+	*@param num the number of the room
 	*/
 	public void addNewSymptom(String symptomNew, int num){
 		 miniRooms[num].addNewSymptom(symptomNew);
@@ -698,10 +706,34 @@ public class Veterinary{
 	*pre: The patient clinic story must be not null.
 	*post: New notes were added to the possible diagnostic in the patient clinic story.
 	*@param diagnostic. This param must be not null.
+	*@param num the number of the room
 	*/
 	public void addNewDiagnostic(String diagnostic, int num){
 		miniRooms[num].addNewDiagnostic(diagnostic);
 	}
+	
+	public void addSer(NewService n){
+		otherServices.add(n);
+	}
+	
+	/**
+	*Description this method add a service
+	*@param typeService the new type services provided by the veterinary
+	*@param day the days of month
+	*@param month the month of year
+	*@param year the current year 
+	*@param id the idetification of client 
+	*@param name the name of pet
+	*post: has been add a new service
+	*/
+	public void addService(char typeService, int day, int month, int year, String id, String name){
+		Date register = new Date(day, month, year);
+		ClientHuman c = findCliente(id);
+		Pet animal = c.findPet(name);
+		NewService nuevo = new NewService(typeService, register, animal);
+		addSer(nuevo);
+	}
+	
 	
 	
 }
