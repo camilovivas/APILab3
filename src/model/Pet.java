@@ -121,6 +121,9 @@ public class Pet{
 	
 	
 	//metodos
+	public String idowner(){
+		return ownerP.getId();
+	}
 	
 	/**
 	*Description this method have the information of owner of the pet

@@ -373,5 +373,40 @@ public class ClinicHistory{
 	public void setOut(Date out){
 		this.out = out;
 	}
+	/**
+	*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: New medicines were added to the patient clinic story.
+	*@param The medicine name. This param must be not null.
+	*@param The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequency assigned.
+	*@param The medicine cost by each dose. This param could be empty.
+	*@param The frequency of medicine application. This param could be empty.
+	*@return A message that indiques if medicine was added to the patient clinic story
+	*/
+	public String addNewMedicines(String name, double dose, double costDose, int frequency){
+		Medicine nueva  = new Medicine(name, dose, costDose, frequency);
+		cure.add(nueva);
+		String msj = "se ha agregado la nyeva medicina";
+		return msj;
+	}
 	
+	/**
+	*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: A new symptom were added to the patient clinic story.
+	*@param symptomNew This param must be not null.
+	*/
+	public void addNewSymptom(String symptomNew){
+		symptom += symptomNew;
+	}
+	
+	/**
+	*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: New notes were added to the possible diagnostic in the patient clinic story.
+	*@param diagnostic. This param must be not null.
+	*/
+	public void addNewDiagnostic(String diagnostic){
+		diagnosis += diagnostic;
+	}
 }

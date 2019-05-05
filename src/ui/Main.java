@@ -137,12 +137,15 @@ public class Main {
 				System.out.println(relacion.showNameForAllPetsHospi());
 				int option = lector.nextInt();
 				System.out.println("ingrese el diagnostico");
+				String diagnostic = lector.nextLine();
 				break;
 				
 				case 12
 				System.out.println("estas son las mascotas hospitalizadas, ingrese el numero de la cual quiere agregar un sintoma");
 				System.out.println(relacion.showNameForAllPetsHospi());
 				int option = lector.nextInt();
+				System.out.println("ingrese el sintoma");
+				String symptom = lector.nextLine();
 				break;
 				
 				case 13
@@ -183,26 +186,34 @@ public class Main {
 				break;
 				
 				case 17
-				System.out.println("el promedio de ingresos en esta semana fue:");
+				System.out.println("ATENCION: EL PPROGRAMA CALCULA EL PROMEDIO DE LOS SIGUIENTES 7 DIAS A LA FECHA INGRESADA");
+				System.out.println("ingrese el dia");
+				int day =lector.nextInt();
+				System.out.println("ingrese el mes");
+				int month = lector.nextInt();
+				System.out.println("ingrese el año");
+ 				int year = lector.nextInt();
+				System.out.println("el promedio de ingresos en esta semana fue:"+calculateEarningsofWeek(day, month, year));
 				break;
 				
 				case 18
 				System.out.println("ingrese la fecha inicial");
 				System.out.println("ingrese el dia");
-				int day =lector.nextInt();
+				int dayI =lector.nextInt();
 				System.out.println("ingrese el mes");
-				int month = lector.nextInt();
+				int monthI = lector.nextInt();
 				System.out.println("ingrese el año");
- 				int year = lector.nextInt();
+ 				int yearI = lector.nextInt();
 				
 				System.out.println("ingrese la fecha final");
 				System.out.println("ingrese el dia");
-				int day =lector.nextInt();
+				int dayF =lector.nextInt();
 				System.out.println("ingrese el mes");
-				int month = lector.nextInt();
+				int monthF = lector.nextInt();
 				System.out.println("ingrese el año");
- 				int year = lector.nextInt();
-				break;
+ 				int yearF = lector.nextInt();
+				 System.out.println(reporInLapse(dayI, monthI, yearI, dayF, monthF, yearF));
+				 System.out.println(reporInLapse2(dayI, monthI, yearI, dayF, monthF, yearF));
 				break;
 				
 				case 19:

@@ -411,8 +411,8 @@ public class Veterinary{
 	
 	
 	/**
-	*Description This method calculate earnings from service of bath veterynary
-	*@return the aerning from bath veterynary
+	*Description This method calculate earnings from service of bath veterinary
+	*@return the aerning from bath veterinary
 	*/
 	public double earningforservice1(){
 		double cost =0.0;
@@ -508,6 +508,10 @@ public class Veterinary{
 	}
 	
 	//los siguientes metodos 5 calcularan el promedio de ganancias(corregir)
+	/**
+	*Description This method calculate the average of earnigs from each new service
+	*@return the average of earnigs from bath veterinary
+	*/
 	public double average1(){
 		int contador = 0
 		for(int i =0; i<otherServices.size(); i++){
@@ -517,6 +521,10 @@ public class Veterinary{
 		}
 		return earningforservice1()/contador;
 	}
+	/**
+	*Description This method calculate the average of earnigs from each new service
+	*@return the average of earnigs from bath domicile
+	*/
 	public double average2(){
 		int contador = 0
 		for(int i =0; i<otherServices.size(); i++){
@@ -526,6 +534,10 @@ public class Veterinary{
 		}
 		return earningforservice2()/contador;
 	}
+	/**
+	*Description This method calculate the average of earnigs from each new service
+	*@return the average of earnigs from nail cutting
+	*/
 	public double average3(){
 		int contador = 0
 		for(int i =0; i<otherServices.size(); i++){
@@ -535,6 +547,10 @@ public class Veterinary{
 		}
 		return earningforservice3()/contador;
 	}
+	/**
+	*Description This method calculate the average of earnigs from each new service
+	*@return the average of earnigs from dental prophylaxis
+	*/
 	public double average4(){
 		int contador = 0
 		for(int i =0; i<otherServices.size(); i++){
@@ -545,7 +561,8 @@ public class Veterinary{
 		return earningforservice4()/contador;
 	}
 	/**
-	*Description This method calcula 
+	*Description This method calculate the average of earnigs from each new service
+	*@return the average of earnigs from vaccination
 	*/
 	public double average5(){
 		int contador = 0
@@ -558,64 +575,133 @@ public class Veterinary{
 	}
 	
 	/**
-	**Description this method calculate the earnings whit date initial and final date
+	**Description this method do a report of the clinic history whit date initial and final date
 	*@param dayI the day of month of the initial date
 	*@param monthI the month of year of the initial date
 	*@param yearI year of the initial date
 	*@param dayF the day of month of the final date
 	*@param monthF the month of the year of the final date
 	*@param yearF  year of the final date
-	*@return the earnings from that time lapse
+	*@return the report from that time lapse
 	*/
-	public double  calculateEarninWeek(int dayI, int monthI, int yearI, int dayF, int monthF, int yearF ){
-		Date nI = new Date(dayI, monthI, yearI);//borrar
-		Date nF = new Date(dayF, monthF, yearF);//borrar
-		
+	public String reporInLapse(int dayI, int monthI, int yearI, int dayF, int monthF, int yearF ){
 		LocalDate ld1 = LocalDate.of(yearI, monthI, dayI);
 		LocalDate ld2 = LocalDate.of(yearF, monthF, dayF);
-		LocalDate ld = LocalDate.of(2019, 1, 1);//preguntar al profesor si existe una herramienta para el año actual
+		LocalDate ld = LocalDate.of(2019, 1, 1);
 		
 		long daysI = ld.until(ld1, ChronoUnit.DAYS);
 		long daysE = ld.until(ld2, ChronoUnit.DAYS);
-		int earning = 0;
+		String reporthos = "";
+		for(int i = 0; i<history.size(); i++){
+			LocalDate l = LocalDate.of(history.get(i).getEntry().getYear(), history.get(i).getEntry().getMonth(), history.get(i).getEntry().getDay());
+			
+			long daysl = ld.until(l, ChronoUnit.DAYS);
+			if(daysl> daysI && daysl <daysE){
+				reporthos += history.get(i);
+			}
+			
+		}
+		return reporthos;
+		
+	}
+	/**
+	**Description this method do a report of the new services whit date initial and final date
+	*@param dayI the day of month of the initial date
+	*@param monthI the month of year of the initial date
+	*@param yearI year of the initial date
+	*@param dayF the day of month of the final date
+	*@param monthF the month of the year of the final date
+	*@param yearF  year of the final date
+	*@return the report from that time lapse
+	*/
+	public String reporInLapse2(int dayI, int monthI, int yearI, int dayF, int monthF, int yearF ){
+		LocalDate ld1 = LocalDate.of(yearI, monthI, dayI);
+		LocalDate ld2 = LocalDate.of(yearF, monthF, dayF);
+		LocalDate ld = LocalDate.of(2019, 1, 1);
+		
+		long daysI = ld.until(ld1, ChronoUnit.DAYS);
+		long daysE = ld.until(ld2, ChronoUnit.DAYS);
+		String reportser = "";
+		for(int j = 0; j<otherServices.size(); j++){
+			LocalDate l2 = LocalDate.of(otherServices.get(j).getRegister().getYear(), otherServices.get(j).getRegister().getMonth(), otherServices.get(j).getRegister().getDay());
+			long days2 = ld.until(l2, ChronoUnit.DAYS);
+			if(days2>daysI && days2 <daysE){
+				reportser += otherServices.get(j);
+			
+			}
+		}
+		return reportser;
+	}
+	/**
+	*Description this method calculate the earnigs of a week
+	*@param dayI the day of month of the initial date
+	*@param monthI the month of year of the initial date
+	*@param yearI year of the initial date
+	*@return the earnigs from that time lapse
+	*/
+	public double calculateEarningsofWeek(int dayI, int monthI, int yearI){
+		LocalDate ld1 = LocalDate.of(yearI, monthI, dayI);
+		LocalDate ld2 = LocalDate.of(yearI, monthI, dayI+7);
+		LocalDate ld = LocalDate.of(2019, 1, 1);
+		
+		long daysI = ld.until(ld1, ChronoUnit.DAYS);
+		long daysE = ld.until(ld2, ChronoUnit.DAYS);
+		
+		double earnigshos = 0;
+		double earnigserv = 0;
 		for(int i = 0; i<history.size(); i++){
 			LocalDate l = LocalDate.of(history.get(i).getEntry().getYear(), history.get(i).getEntry().getMonth(), history.get(i).getEntry().getDay());
 			long daysl = ld.until(l, ChronoUnit.DAYS);
 			if(daysl> daysI && daysl <daysE){
-				earning += history.get(i).calculateEarnings();
+				earnigshos += history.get(i).calculateEarnings();
 			}
+			for(int j = 0; j<otherServices.size(); j++){
+				LocalDate l2 = LocalDate.of(otherServices.get(j).getRegister().getYear(), otherServices.get(j).getRegister().getMonth(), otherServices.get(j).getRegister().getDay());
+				long days2 = ld.until(l2, ChronoUnit.DAYS);
+				if(days2>daysI && days2 <daysE){
+					earnigserv += otherServices.get(j).getCost();
+			
+				}
+			}
+			
 		}
-		return earning;
-		
+		return earnigshos+earnigserv;
 	}
-	calculateEarningsofWeek
 	/**
 	*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
 	*pre: The patient clinic story must be not null.
 	*post: New medicines were added to the patient clinic story.
+	*@param num the number of the room
 	*@param The medicine name. This param must be not null.
 	*@param The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned.
 	*@param The medicine cost by each dose. This param could be empty.
 	*@param The frequency of medicine application. This param could be empty.
-	*@return A message that indiques if medicine was added to the patient clinic story
+	*@return A String
 	*/
-	public String addNewMedicines(String, double, double, int)
+	public String addNewMedicines(int num, String name, double dose, double costDose, int frequency){
+		String msj = miniRooms[num].addNewMedicines(String name, double dose, double costDose, int frequency);
+		return msj;
+	}
 	
 	/**
 	*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
 	*pre: The patient clinic story must be not null.
 	*post: A new symptom were added to the patient clinic story.
-	*@param The new symptom presented. This param must be not null.
+	*@param symptomNew This param must be not null.
 	*/
-	public void addNewSymptom(String)
+	public void addNewSymptom(String symptomNew, int num){
+		 miniRooms[num].addNewSymptom(symptomNew);
+	}
 	
 	/**
 	*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
 	*pre: The patient clinic story must be not null.
 	*post: New notes were added to the possible diagnostic in the patient clinic story.
-	*@param The notes of possible diagnostic. This param must be not null.
+	*@param diagnostic. This param must be not null.
 	*/
-	public void addNewDiagnostic(String)
+	public void addNewDiagnostic(String diagnostic, int num){
+		miniRooms[num].addNewDiagnostic(diagnostic);
+	}
 	
 	
 }

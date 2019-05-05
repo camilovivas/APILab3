@@ -34,9 +34,10 @@ public class NewService{
 	public NewService(char typeService, Date register, Pet animal){
 		this.typeService = typeService;
 		this.cost = calculateCost();
-		this.idWoner = idWoner;
-		this.namePet = namePet;
-		this.animal = animal
+		this.idWoner = animal.idowner();
+		this.namePet = animal.getName();
+		this.animal = animal;
+		this.register = register;
 	
 	}
 	//get y set
@@ -50,6 +51,7 @@ public class NewService{
 	public Date getRegister(){
 		return register;	
 	}
+	
 	
 	//metodos
 	
