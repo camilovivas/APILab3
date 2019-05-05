@@ -169,17 +169,17 @@ public class Veterinary{
 		return msj;
 	}
 	
-	public void addPet(String id, String name, int typeAnimal, int age, double weight, double height){
+	public void addPet(String id, String name, int typeAnimal, int age, double weight, double height, ClientHuman ownerP){
 		ClientHuman temp = findCliente(id);
 		if (temp != null){
-			Pet p1 = new Pet(name, typeAnimal, age, weight, height, temp);
+			Pet p1 = new Pet(name, typeAnimal, age, weight, height, ownerP);
 			temp.addPets(p1);
 		}
 		
 	}
 	
 	
-	//eliminar cliente
+	//eliminar cliente(eliminar)
 	public void deleitClient(String id){
 		for(int i = 0; i<service.size(); i++){
 			if(service.get(i).getId().equals(id)){
@@ -248,11 +248,6 @@ public class Veterinary{
 			
 		}
 		return msj;
-	}
-	
-	
-	public void clinicHistory(int i){
-		history.get(i);
 	}
 	
 	//reporte del animal hospitalizado con historia clinica
@@ -514,22 +509,52 @@ public class Veterinary{
 	
 	//los siguientes metodos 5 calcularan el promedio de ganancias(corregir)
 	public double average1(){
-		return earningforservice1()/otherServices.size();
+		int contador = 0
+		for(int i =0; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.BATH_VETERINARY){
+				contador++;
+			}
+		}
+		return earningforservice1()/contador;
 	}
 	public double average2(){
-		return earningforservice2()/otherServices.size();
+		int contador = 0
+		for(int i =0; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.BATH_DOMICILE){
+				contador++;
+			}
+		}
+		return earningforservice2()/contador;
 	}
 	public double average3(){
-		return earningforservice3()/otherServices.size();
+		int contador = 0
+		for(int i =0; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.NAIL_CUTTING){
+				contador++;
+			}
+		}
+		return earningforservice3()/contador;
 	}
 	public double average4(){
-		return earningforservice4()/otherServices.size();
+		int contador = 0
+		for(int i =0; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.DENTAL_PROPHYLAXIS){
+				contador++;
+			}
+		}
+		return earningforservice4()/contador;
 	}
 	/**
 	*Description This method calcula 
 	*/
 	public double average5(){
-		return earningforservice5()/otherServices.size();
+		int contador = 0
+		for(int i =0; i<otherServices.size(); i++){
+			if(otherServices.get(i).getTypeService() == NewService.VACCINATION){
+				contador++;
+			}
+		}
+		return earningforservice5()/contador;
 	}
 	
 	/**
@@ -563,7 +588,7 @@ public class Veterinary{
 		return earning;
 		
 	}
-	
+	calculateEarningsofWeek
 	/**
 	*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
 	*pre: The patient clinic story must be not null.
@@ -574,7 +599,7 @@ public class Veterinary{
 	*@param The frequency of medicine application. This param could be empty.
 	*@return A message that indiques if medicine was added to the patient clinic story
 	*/
-	public void addNewMedicines()
+	public String addNewMedicines(String, double, double, int)
 	
 	/**
 	*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
@@ -582,7 +607,7 @@ public class Veterinary{
 	*post: A new symptom were added to the patient clinic story.
 	*@param The new symptom presented. This param must be not null.
 	*/
-	public void addNewSymptom()
+	public void addNewSymptom(String)
 	
 	/**
 	*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
@@ -590,7 +615,7 @@ public class Veterinary{
 	*post: New notes were added to the possible diagnostic in the patient clinic story.
 	*@param The notes of possible diagnostic. This param must be not null.
 	*/
-	public void addNewDiagnostic()
+	public void addNewDiagnostic(String)
 	
 	
 }

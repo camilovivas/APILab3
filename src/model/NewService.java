@@ -25,16 +25,18 @@ public class NewService{
 	
 	//relacion
 	private Date register;
+	private Pet animal;
 	
 	/**
 	*Description This is the build of class NewService
 	*@param typeService the new type services provided by the veterinary
 	*/
-	public NewService(char typeService){
+	public NewService(char typeService, Date register, Pet animal){
 		this.typeService = typeService;
 		this.cost = calculateCost();
 		this.idWoner = idWoner;
 		this.namePet = namePet;
+		this.animal = animal
 	
 	}
 	//get y set
